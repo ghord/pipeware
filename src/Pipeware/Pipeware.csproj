@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Version>1.0.0-preview3</Version>
+		<Authors>ghord</Authors>
+		<PackageProjectUrl>https://github.com/ghord/pipeware</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Title>Pipeware</Title>
+		<PackageReadmeFile>Readme.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<IsTrimmable>True</IsTrimmable>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+	  <WarningsNotAsErrors>RS0016;RS0017</WarningsNotAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\art\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\..\Readme.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" PrivateAssets="compile" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" PrivateAssets="compile" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" PrivateAssets="compile" />
+		<PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.4" PrivateAssets="compile" />
+	</ItemGroup>
+
+</Project>

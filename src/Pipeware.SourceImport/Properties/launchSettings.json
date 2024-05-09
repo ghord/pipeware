@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "import": {
+      "commandName": "Project",
+      "commandLineArgs": "import \"..\\..\\..\\..\\Pipeware\\SourceImport\""
+    },
+    "import --reimport": {
+      "commandName": "Project",
+      "commandLineArgs": "import \"..\\..\\..\\..\\Pipeware\\SourceImport\" --reimport"
+    },
+    "reimport all": {
+      "commandName": "Project",
+      "commandLineArgs": "import \"..\\..\\..\\..\\Pipeware\\SourceImport\" --reimport --all"
+    },
+    "import --reimport --last 10": {
+      "commandName": "Project",
+      "commandLineArgs": "import \"..\\..\\..\\..\\Pipeware\\SourceImport\" --reimport --last 10"
+    },
+    "fetch": {
+      "commandName": "Project",
+      "commandLineArgs": "fetch"
+    }
+  }
+}

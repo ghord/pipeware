@@ -1,0 +1,993 @@
+﻿#nullable enable
+abstract Pipeware.Builder.EndpointBuilder<TRequestContext>.Build() -> Pipeware.Endpoint<TRequestContext!>!
+abstract Pipeware.EndpointFilterInvocationContext<TRequestContext>.Arguments.get -> System.Collections.Generic.IList<object?>!
+abstract Pipeware.EndpointFilterInvocationContext<TRequestContext>.GetArgument<T>(int index) -> T
+abstract Pipeware.EndpointFilterInvocationContext<TRequestContext>.RequestContext.get -> TRequestContext!
+abstract Pipeware.Routing.EndpointDataSource<TRequestContext>.Endpoints.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>!
+abstract Pipeware.Routing.EndpointDataSource<TRequestContext>.GetChangeToken() -> Microsoft.Extensions.Primitives.IChangeToken!
+abstract Pipeware.Routing.LinkGenerator<TRequestContext>.GetPathByAddress<TAddress>(TAddress address, Pipeware.Routing.RouteValueDictionary! values, Pipeware.PathString pathBase = default(Pipeware.PathString), Pipeware.FragmentString fragment = default(Pipeware.FragmentString), Pipeware.Routing.LinkOptions? options = null) -> string?
+abstract Pipeware.Routing.LinkGenerator<TRequestContext>.GetPathByAddress<TAddress>(TRequestContext! requestContext, TAddress address, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteValueDictionary? ambientValues = null, Pipeware.PathString? pathBase = null, Pipeware.FragmentString fragment = default(Pipeware.FragmentString), Pipeware.Routing.LinkOptions? options = null) -> string?
+abstract Pipeware.Routing.LinkParser.ParsePathByAddress<TAddress>(TAddress address, Pipeware.PathString path) -> Pipeware.Routing.RouteValueDictionary?
+abstract Pipeware.Routing.MatcherPolicy<TRequestContext>.Order.get -> int
+abstract Pipeware.Routing.Matching.EndpointSelector<TRequestContext>.SelectAsync(TRequestContext! requestContext, Pipeware.Routing.Matching.CandidateSet<TRequestContext!>! candidates) -> System.Threading.Tasks.Task!
+abstract Pipeware.Routing.Matching.PolicyJumpTable<TRequestContext>.GetDestination(TRequestContext! requestContext) -> int
+abstract Pipeware.Routing.ParameterPolicyFactory<TRequestContext>.Create(Pipeware.Routing.Patterns.RoutePatternParameterPart? parameter, Pipeware.Routing.IParameterPolicy! parameterPolicy) -> Pipeware.Routing.IParameterPolicy!
+abstract Pipeware.Routing.ParameterPolicyFactory<TRequestContext>.Create(Pipeware.Routing.Patterns.RoutePatternParameterPart? parameter, string! inlineText) -> Pipeware.Routing.IParameterPolicy!
+abstract Pipeware.Routing.Patterns.RoutePatternTransformer<TRequestContext>.SubstituteRequiredValues(Pipeware.Routing.Patterns.RoutePattern! original, object! requiredValues) -> Pipeware.Routing.Patterns.RoutePattern?
+abstract Pipeware.Routing.Template.TemplateBinderFactory<TRequestContext>.Create(Pipeware.Routing.Patterns.RoutePattern! pattern) -> Pipeware.Routing.Template.TemplateBinder!
+abstract Pipeware.Routing.Template.TemplateBinderFactory<TRequestContext>.Create(Pipeware.Routing.Template.RouteTemplate! template, Pipeware.Routing.RouteValueDictionary! defaults) -> Pipeware.Routing.Template.TemplateBinder!
+override Pipeware.DefaultEndpointFilterInvocationContext<TRequestContext>.Arguments.get -> System.Collections.Generic.IList<object?>!
+override Pipeware.DefaultEndpointFilterInvocationContext<TRequestContext>.GetArgument<T>(int index) -> T
+override Pipeware.DefaultEndpointFilterInvocationContext<TRequestContext>.RequestContext.get -> TRequestContext!
+override Pipeware.Endpoint<TRequestContext>.ToString() -> string?
+override Pipeware.FragmentString.Equals(object? obj) -> bool
+override Pipeware.FragmentString.GetHashCode() -> int
+override Pipeware.FragmentString.ToString() -> string!
+override Pipeware.HostString.Equals(object? obj) -> bool
+override Pipeware.HostString.GetHashCode() -> int
+override Pipeware.HostString.ToString() -> string!
+override Pipeware.PathString.Equals(object? obj) -> bool
+override Pipeware.PathString.GetHashCode() -> int
+override Pipeware.PathString.ToString() -> string!
+override Pipeware.QueryString.Equals(object? obj) -> bool
+override Pipeware.QueryString.GetHashCode() -> int
+override Pipeware.QueryString.ToString() -> string!
+override Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>.Endpoints.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>!
+override Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>.GetChangeToken() -> Microsoft.Extensions.Primitives.IChangeToken!
+override Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>.GetGroupedEndpoints(Pipeware.Routing.RouteGroupContext<TRequestContext!>! context) -> System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>!
+override Pipeware.Routing.EndpointNameMetadata.ToString() -> string!
+override Pipeware.Routing.Patterns.RoutePatternException.GetObjectData(System.Runtime.Serialization.SerializationInfo! info, System.Runtime.Serialization.StreamingContext context) -> void
+override Pipeware.Routing.RouteEndpointBuilder<TRequestContext>.Build() -> Pipeware.Endpoint<TRequestContext!>!
+override Pipeware.Routing.RouteNameMetadata.ToString() -> string!
+override Pipeware.Routing.RouteValuesAddress.ToString() -> string?
+Pipeware.AsParametersAttribute
+Pipeware.AsParametersAttribute.AsParametersAttribute() -> void
+Pipeware.BadRequestException
+Pipeware.BadRequestException.BadRequestException(string! message) -> void
+Pipeware.BadRequestException.BadRequestException(string! message, System.Exception! inner) -> void
+Pipeware.Builder.EndpointBuilder<TRequestContext>
+Pipeware.Builder.EndpointBuilder<TRequestContext>.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.Builder.EndpointBuilder<TRequestContext>.ApplicationServices.init -> void
+Pipeware.Builder.EndpointBuilder<TRequestContext>.DisplayName.get -> string?
+Pipeware.Builder.EndpointBuilder<TRequestContext>.DisplayName.set -> void
+Pipeware.Builder.EndpointBuilder<TRequestContext>.EndpointBuilder() -> void
+Pipeware.Builder.EndpointBuilder<TRequestContext>.FilterFactories.get -> System.Collections.Generic.IList<System.Func<Pipeware.EndpointFilterFactoryContext!, Pipeware.EndpointFilterDelegate<TRequestContext!>!, Pipeware.EndpointFilterDelegate<TRequestContext!>!>!>!
+Pipeware.Builder.EndpointBuilder<TRequestContext>.Metadata.get -> System.Collections.Generic.IList<object!>!
+Pipeware.Builder.EndpointBuilder<TRequestContext>.RequestDelegate.get -> Pipeware.RequestDelegate<TRequestContext!>?
+Pipeware.Builder.EndpointBuilder<TRequestContext>.RequestDelegate.set -> void
+Pipeware.Builder.EndpointRouteBuilderExtensions
+Pipeware.Builder.EndpointRoutingPipelineBuilderExtensions
+Pipeware.Builder.Extensions.MapMiddleware<TRequestContext>
+Pipeware.Builder.Extensions.MapMiddleware<TRequestContext>.Invoke(TRequestContext! context) -> System.Threading.Tasks.Task!
+Pipeware.Builder.Extensions.MapMiddleware<TRequestContext>.MapMiddleware(Pipeware.RequestDelegate<TRequestContext!>! next, Pipeware.Builder.Extensions.MapOptions<TRequestContext!>! options) -> void
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.Branch.get -> Pipeware.RequestDelegate<TRequestContext!>?
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.Branch.set -> void
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.MapOptions() -> void
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.PathMatch.get -> Pipeware.PathString
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.PathMatch.set -> void
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.PreserveMatchedPathSegment.get -> bool
+Pipeware.Builder.Extensions.MapOptions<TRequestContext>.PreserveMatchedPathSegment.set -> void
+Pipeware.Builder.Extensions.MapWhenMiddleware<TRequestContext>
+Pipeware.Builder.Extensions.MapWhenMiddleware<TRequestContext>.Invoke(TRequestContext! context) -> System.Threading.Tasks.Task!
+Pipeware.Builder.Extensions.MapWhenMiddleware<TRequestContext>.MapWhenMiddleware(Pipeware.RequestDelegate<TRequestContext!>! next, Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext!>! options) -> void
+Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>
+Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Branch.get -> Pipeware.RequestDelegate<TRequestContext!>?
+Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Branch.set -> void
+Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.MapWhenOptions() -> void
+Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Predicate.get -> System.Func<TRequestContext!, bool>?
+Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Predicate.set -> void
+Pipeware.Builder.IEndpointConventionBuilder<TRequestContext, TSelf>
+Pipeware.Builder.IEndpointConventionBuilder<TRequestContext>
+Pipeware.Builder.IEndpointConventionBuilder<TRequestContext>.Add(System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>! convention) -> void
+Pipeware.Builder.IEndpointConventionBuilder<TRequestContext>.Finally(System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>! finallyConvention) -> void
+Pipeware.Builder.IPipelineBuilder<TRequestContext, TSelf>
+Pipeware.Builder.IPipelineBuilder<TRequestContext>
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.ApplicationServices.set -> void
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.Build() -> Pipeware.RequestDelegate<TRequestContext!>!
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.New() -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.PipelineFeatures.get -> Pipeware.Features.IFeatureCollection!
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.Properties.get -> System.Collections.Generic.IDictionary<string!, object?>!
+Pipeware.Builder.IPipelineBuilder<TRequestContext>.Use(System.Func<Pipeware.RequestDelegate<TRequestContext!>!, Pipeware.RequestDelegate<TRequestContext!>!>! middleware) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.MapExtensions
+Pipeware.Builder.MapWhenExtensions
+Pipeware.Builder.PipelineBuilder<TRequestContext>
+Pipeware.Builder.PipelineBuilder<TRequestContext>.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.ApplicationServices.set -> void
+Pipeware.Builder.PipelineBuilder<TRequestContext>.Build() -> Pipeware.RequestDelegate<TRequestContext!>!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.DataSources.get -> System.Collections.Generic.ICollection<Pipeware.Routing.EndpointDataSource<TRequestContext!>!>!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.DefaultDelegate.get -> Pipeware.RequestDelegate<TRequestContext!>!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.DefaultDelegate.set -> void
+Pipeware.Builder.PipelineBuilder<TRequestContext>.New() -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.PipelineBuilder(System.IServiceProvider! serviceProvider) -> void
+Pipeware.Builder.PipelineBuilder<TRequestContext>.PipelineBuilder(System.IServiceProvider! serviceProvider, Pipeware.Features.IFeatureCollection! pipelineFeatures) -> void
+Pipeware.Builder.PipelineBuilder<TRequestContext>.PipelineFeatures.get -> Pipeware.Features.IFeatureCollection!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.Properties.get -> System.Collections.Generic.IDictionary<string!, object?>!
+Pipeware.Builder.PipelineBuilder<TRequestContext>.Use(System.Func<Pipeware.RequestDelegate<TRequestContext!>!, Pipeware.RequestDelegate<TRequestContext!>!>! middleware) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.RouteHandlerBuilder<TRequestContext>
+Pipeware.Builder.RouteHandlerBuilder<TRequestContext>.Add(System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>! convention) -> void
+Pipeware.Builder.RouteHandlerBuilder<TRequestContext>.Finally(System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>! finalConvention) -> void
+Pipeware.Builder.RouteHandlerBuilder<TRequestContext>.RouteHandlerBuilder(System.Collections.Generic.IEnumerable<Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!>! endpointConventionBuilders) -> void
+Pipeware.Builder.RoutingEndpointConventionBuilderExtensions
+Pipeware.Builder.RunExtensions
+Pipeware.Builder.UseExtensions
+Pipeware.Builder.UseMiddlewareExtensions
+Pipeware.DefaultEndpointFilterInvocationContext<TRequestContext>
+Pipeware.DefaultEndpointFilterInvocationContext<TRequestContext>.DefaultEndpointFilterInvocationContext(TRequestContext! requestContext, params object?[]! arguments) -> void
+Pipeware.EmptyBodyBehavior
+Pipeware.EmptyBodyBehavior.Allow = 1 -> Pipeware.EmptyBodyBehavior
+Pipeware.EmptyBodyBehavior.Default = 0 -> Pipeware.EmptyBodyBehavior
+Pipeware.EmptyBodyBehavior.Disallow = 2 -> Pipeware.EmptyBodyBehavior
+Pipeware.Endpoint<TRequestContext>
+Pipeware.Endpoint<TRequestContext>.DisplayName.get -> string?
+Pipeware.Endpoint<TRequestContext>.Endpoint(Pipeware.RequestDelegate<TRequestContext!>? requestDelegate, Pipeware.EndpointMetadataCollection? metadata, string? displayName) -> void
+Pipeware.Endpoint<TRequestContext>.Metadata.get -> Pipeware.EndpointMetadataCollection!
+Pipeware.Endpoint<TRequestContext>.RequestDelegate.get -> Pipeware.RequestDelegate<TRequestContext!>?
+Pipeware.EndpointFilterDelegate<TRequestContext>
+Pipeware.EndpointFilterExtensions
+Pipeware.EndpointFilterFactoryContext
+Pipeware.EndpointFilterFactoryContext.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.EndpointFilterFactoryContext.ApplicationServices.init -> void
+Pipeware.EndpointFilterFactoryContext.EndpointFilterFactoryContext() -> void
+Pipeware.EndpointFilterFactoryContext.MethodInfo.get -> System.Reflection.MethodInfo!
+Pipeware.EndpointFilterFactoryContext.MethodInfo.init -> void
+Pipeware.EndpointFilterInvocationContext<TRequestContext>
+Pipeware.EndpointFilterInvocationContext<TRequestContext>.EndpointFilterInvocationContext() -> void
+Pipeware.EndpointMetadataCollection
+Pipeware.EndpointMetadataCollection.Count.get -> int
+Pipeware.EndpointMetadataCollection.EndpointMetadataCollection(params object![]! items) -> void
+Pipeware.EndpointMetadataCollection.EndpointMetadataCollection(System.Collections.Generic.IEnumerable<object!>! items) -> void
+Pipeware.EndpointMetadataCollection.Enumerator
+Pipeware.EndpointMetadataCollection.Enumerator.Current.get -> object!
+Pipeware.EndpointMetadataCollection.Enumerator.Dispose() -> void
+Pipeware.EndpointMetadataCollection.Enumerator.Enumerator() -> void
+Pipeware.EndpointMetadataCollection.Enumerator.MoveNext() -> bool
+Pipeware.EndpointMetadataCollection.Enumerator.Reset() -> void
+Pipeware.EndpointMetadataCollection.GetEnumerator() -> Pipeware.EndpointMetadataCollection.Enumerator
+Pipeware.EndpointMetadataCollection.GetMetadata<T>() -> T?
+Pipeware.EndpointMetadataCollection.GetOrderedMetadata<T>() -> System.Collections.Generic.IReadOnlyList<T!>!
+Pipeware.EndpointMetadataCollection.GetRequiredMetadata<T>() -> T!
+Pipeware.EndpointMetadataCollection.this[int index].get -> object!
+Pipeware.EndpointRequestContextExtensions
+Pipeware.Extensions.UriHelper
+Pipeware.Features.FeatureCollection
+Pipeware.Features.FeatureCollection.FeatureCollection() -> void
+Pipeware.Features.FeatureCollection.FeatureCollection(int initialCapacity) -> void
+Pipeware.Features.FeatureCollection.FeatureCollection(Pipeware.Features.IFeatureCollection! defaults) -> void
+Pipeware.Features.FeatureCollection.Get<TFeature>() -> TFeature?
+Pipeware.Features.FeatureCollection.GetEnumerator() -> System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.Type!, object!>>!
+Pipeware.Features.FeatureCollection.IsReadOnly.get -> bool
+Pipeware.Features.FeatureCollection.Set<TFeature>(TFeature? instance) -> void
+Pipeware.Features.FeatureCollection.this[System.Type! key].get -> object?
+Pipeware.Features.FeatureCollection.this[System.Type! key].set -> void
+Pipeware.Features.FeatureReferences<TCache>
+Pipeware.Features.FeatureReferences<TCache>.Cache -> TCache?
+Pipeware.Features.FeatureReferences<TCache>.Collection.get -> Pipeware.Features.IFeatureCollection!
+Pipeware.Features.FeatureReferences<TCache>.FeatureReferences() -> void
+Pipeware.Features.FeatureReferences<TCache>.FeatureReferences(Pipeware.Features.IFeatureCollection! collection) -> void
+Pipeware.Features.FeatureReferences<TCache>.Fetch<TFeature, TState>(ref TFeature? cached, TState state, System.Func<TState, TFeature?>! factory) -> TFeature?
+Pipeware.Features.FeatureReferences<TCache>.Fetch<TFeature>(ref TFeature? cached, System.Func<Pipeware.Features.IFeatureCollection!, TFeature?>! factory) -> TFeature?
+Pipeware.Features.FeatureReferences<TCache>.Initalize(Pipeware.Features.IFeatureCollection! collection) -> void
+Pipeware.Features.FeatureReferences<TCache>.Initalize(Pipeware.Features.IFeatureCollection! collection, int revision) -> void
+Pipeware.Features.FeatureReferences<TCache>.Revision.get -> int
+Pipeware.Features.IEndpointFeature<TRequestContext>
+Pipeware.Features.IEndpointFeature<TRequestContext>.Endpoint.get -> Pipeware.Endpoint<TRequestContext!>?
+Pipeware.Features.IEndpointFeature<TRequestContext>.Endpoint.set -> void
+Pipeware.Features.IFeatureCollection
+Pipeware.Features.IFeatureCollection.Get<TFeature>() -> TFeature?
+Pipeware.Features.IFeatureCollection.IsReadOnly.get -> bool
+Pipeware.Features.IFeatureCollection.Revision.get -> int
+Pipeware.Features.IFeatureCollection.Set<TFeature>(TFeature? instance) -> void
+Pipeware.Features.IFeatureCollection.this[System.Type! key].get -> object?
+Pipeware.Features.IFeatureCollection.this[System.Type! key].set -> void
+Pipeware.Features.IQueryFeature
+Pipeware.Features.IQueryFeature.Query.get -> Pipeware.IQueryCollection!
+Pipeware.Features.IQueryFeature.Query.set -> void
+Pipeware.Features.IRequestBodyFeature
+Pipeware.Features.IRequestBodyFeature.GetBodyAsync(System.Type! bodyType) -> System.Threading.Tasks.Task<object?>!
+Pipeware.Features.IRequestBodyFeature.IsBadRequestException(System.Exception! ex, out bool preventRethrow) -> bool
+Pipeware.Features.IRequestLifetimeFeature
+Pipeware.Features.IRequestLifetimeFeature.Abort() -> void
+Pipeware.Features.IRequestLifetimeFeature.RequestAborted.get -> System.Threading.CancellationToken
+Pipeware.Features.IRequestLifetimeFeature.RequestAborted.set -> void
+Pipeware.Features.IRequestPathFeature
+Pipeware.Features.IRequestPathFeature.Path.get -> Pipeware.PathString
+Pipeware.Features.IRequestPathFeature.Path.set -> void
+Pipeware.Features.IRequestPathFeature.PathBase.get -> Pipeware.PathString
+Pipeware.Features.IRequestPathFeature.PathBase.set -> void
+Pipeware.Features.IRequestPathFeature.QueryString.get -> string!
+Pipeware.Features.IRequestPathFeature.QueryString.set -> void
+Pipeware.Features.IResultFailureFeature
+Pipeware.Features.IResultFailureFeature.Exception.get -> System.Exception?
+Pipeware.Features.IResultFailureFeature.Exception.set -> void
+Pipeware.Features.IResultFailureFeature.IsFailure.get -> bool
+Pipeware.Features.IResultFailureFeature.IsFailure.set -> void
+Pipeware.Features.IResultObjectFeature
+Pipeware.Features.IResultObjectFeature.Result.get -> object?
+Pipeware.Features.IResultObjectFeature.SetResultAsync(object? result) -> System.Threading.Tasks.Task!
+Pipeware.Features.IRouteValuesFeature
+Pipeware.Features.IRouteValuesFeature.RouteValues.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Features.IRouteValuesFeature.RouteValues.set -> void
+Pipeware.Features.QueryFeature
+Pipeware.Features.QueryFeature.Query.get -> Pipeware.IQueryCollection!
+Pipeware.Features.QueryFeature.Query.set -> void
+Pipeware.Features.QueryFeature.QueryFeature(Pipeware.Features.IFeatureCollection! features) -> void
+Pipeware.Features.QueryFeature.QueryFeature(Pipeware.IQueryCollection! query) -> void
+Pipeware.FragmentString
+Pipeware.FragmentString.Equals(Pipeware.FragmentString other) -> bool
+Pipeware.FragmentString.FragmentString() -> void
+Pipeware.FragmentString.FragmentString(string! value) -> void
+Pipeware.FragmentString.HasValue.get -> bool
+Pipeware.FragmentString.ToUriComponent() -> string!
+Pipeware.FragmentString.Value.get -> string!
+Pipeware.FromBodyAttribute
+Pipeware.FromBodyAttribute.EmptyBodyBehavior.get -> Pipeware.EmptyBodyBehavior
+Pipeware.FromBodyAttribute.EmptyBodyBehavior.set -> void
+Pipeware.FromBodyAttribute.FromBodyAttribute() -> void
+Pipeware.FromQueryAttribute
+Pipeware.FromQueryAttribute.FromQueryAttribute() -> void
+Pipeware.FromQueryAttribute.Name.get -> string?
+Pipeware.FromQueryAttribute.Name.set -> void
+Pipeware.FromRouteAttribute
+Pipeware.FromRouteAttribute.FromRouteAttribute() -> void
+Pipeware.FromRouteAttribute.Name.get -> string?
+Pipeware.FromRouteAttribute.Name.set -> void
+Pipeware.FromServicesAttribute
+Pipeware.FromServicesAttribute.FromServicesAttribute() -> void
+Pipeware.HostString
+Pipeware.HostString.Equals(Pipeware.HostString other) -> bool
+Pipeware.HostString.HasValue.get -> bool
+Pipeware.HostString.Host.get -> string!
+Pipeware.HostString.HostString() -> void
+Pipeware.HostString.HostString(string! host, int port) -> void
+Pipeware.HostString.HostString(string! value) -> void
+Pipeware.HostString.Port.get -> int?
+Pipeware.HostString.ToUriComponent() -> string!
+Pipeware.HostString.Value.get -> string!
+Pipeware.IBindableFromRequestContext<TSelf, TRequestContext>
+Pipeware.IBindableFromRequestContext<TSelf, TRequestContext>.BindAsync(TRequestContext! context, System.Reflection.ParameterInfo! parameter) -> System.Threading.Tasks.ValueTask<TSelf?>
+Pipeware.IEndpointFilter<TRequestContext>
+Pipeware.IEndpointFilter<TRequestContext>.InvokeAsync(Pipeware.EndpointFilterInvocationContext<TRequestContext!>! context, Pipeware.EndpointFilterDelegate<TRequestContext!>! next) -> System.Threading.Tasks.ValueTask<object?>
+Pipeware.IMiddleware<TRequestContext>
+Pipeware.IMiddleware<TRequestContext>.InvokeAsync(TRequestContext! context, Pipeware.RequestDelegate<TRequestContext!>! next) -> System.Threading.Tasks.Task!
+Pipeware.IMiddlewareFactory<TRequestContext>
+Pipeware.IMiddlewareFactory<TRequestContext>.Create(System.Type! middlewareType) -> Pipeware.IMiddleware<TRequestContext!>?
+Pipeware.IMiddlewareFactory<TRequestContext>.Release(Pipeware.IMiddleware<TRequestContext!>! middleware) -> void
+Pipeware.IQueryCollection
+Pipeware.IQueryCollection.ContainsKey(string! key) -> bool
+Pipeware.IQueryCollection.Count.get -> int
+Pipeware.IQueryCollection.Keys.get -> System.Collections.Generic.ICollection<string!>!
+Pipeware.IQueryCollection.this[string! key].get -> Microsoft.Extensions.Primitives.StringValues
+Pipeware.IQueryCollection.TryGetValue(string! key, out Microsoft.Extensions.Primitives.StringValues value) -> bool
+Pipeware.IRequestContext
+Pipeware.IRequestContext.Features.get -> Pipeware.Features.IFeatureCollection!
+Pipeware.IRequestContext.Items.get -> System.Collections.Generic.IDictionary<string!, object?>!
+Pipeware.IRequestContext.RequestServices.get -> System.IServiceProvider!
+Pipeware.IResult<TRequestContext>
+Pipeware.IResult<TRequestContext>.ExecuteAsync(TRequestContext! requestContext) -> System.Threading.Tasks.Task!
+Pipeware.Metadata.IEndpointMetadataProvider<TRequestContext>
+Pipeware.Metadata.IEndpointMetadataProvider<TRequestContext>.PopulateMetadata(System.Reflection.MethodInfo! method, Pipeware.Builder.EndpointBuilder<TRequestContext!>! builder) -> void
+Pipeware.Metadata.IEndpointParameterMetadataProvider<TRequestContext>
+Pipeware.Metadata.IEndpointParameterMetadataProvider<TRequestContext>.PopulateMetadata(System.Reflection.ParameterInfo! parameter, Pipeware.Builder.EndpointBuilder<TRequestContext!>! builder) -> void
+Pipeware.Metadata.IFromBodyMetadata
+Pipeware.Metadata.IFromBodyMetadata.AllowEmpty.get -> bool
+Pipeware.Metadata.IFromQueryMetadata
+Pipeware.Metadata.IFromQueryMetadata.Name.get -> string?
+Pipeware.Metadata.IFromRouteMetadata
+Pipeware.Metadata.IFromRouteMetadata.Name.get -> string?
+Pipeware.Metadata.IFromServiceMetadata
+Pipeware.Metadata.IRouteDiagnosticsMetadata
+Pipeware.Metadata.IRouteDiagnosticsMetadata.Route.get -> string!
+Pipeware.MiddlewareFactory<TRequestContext>
+Pipeware.MiddlewareFactory<TRequestContext>.Create(System.Type! middlewareType) -> Pipeware.IMiddleware<TRequestContext!>?
+Pipeware.MiddlewareFactory<TRequestContext>.MiddlewareFactory(System.IServiceProvider! serviceProvider) -> void
+Pipeware.MiddlewareFactory<TRequestContext>.Release(Pipeware.IMiddleware<TRequestContext!>! middleware) -> void
+Pipeware.PathString
+Pipeware.PathString.Add(Pipeware.PathString other) -> Pipeware.PathString
+Pipeware.PathString.Add(Pipeware.QueryString other) -> string!
+Pipeware.PathString.Equals(Pipeware.PathString other) -> bool
+Pipeware.PathString.Equals(Pipeware.PathString other, System.StringComparison comparisonType) -> bool
+Pipeware.PathString.HasValue.get -> bool
+Pipeware.PathString.PathString() -> void
+Pipeware.PathString.PathString(string? value) -> void
+Pipeware.PathString.StartsWithSegments(Pipeware.PathString other) -> bool
+Pipeware.PathString.StartsWithSegments(Pipeware.PathString other, out Pipeware.PathString matched, out Pipeware.PathString remaining) -> bool
+Pipeware.PathString.StartsWithSegments(Pipeware.PathString other, out Pipeware.PathString remaining) -> bool
+Pipeware.PathString.StartsWithSegments(Pipeware.PathString other, System.StringComparison comparisonType) -> bool
+Pipeware.PathString.StartsWithSegments(Pipeware.PathString other, System.StringComparison comparisonType, out Pipeware.PathString matched, out Pipeware.PathString remaining) -> bool
+Pipeware.PathString.StartsWithSegments(Pipeware.PathString other, System.StringComparison comparisonType, out Pipeware.PathString remaining) -> bool
+Pipeware.PathString.ToUriComponent() -> string!
+Pipeware.PathString.Value.get -> string?
+Pipeware.QueryCollection
+Pipeware.QueryCollection.ContainsKey(string! key) -> bool
+Pipeware.QueryCollection.Count.get -> int
+Pipeware.QueryCollection.Enumerator
+Pipeware.QueryCollection.Enumerator.Current.get -> System.Collections.Generic.KeyValuePair<string!, Microsoft.Extensions.Primitives.StringValues>
+Pipeware.QueryCollection.Enumerator.Dispose() -> void
+Pipeware.QueryCollection.Enumerator.Enumerator() -> void
+Pipeware.QueryCollection.Enumerator.MoveNext() -> bool
+Pipeware.QueryCollection.GetEnumerator() -> Pipeware.QueryCollection.Enumerator
+Pipeware.QueryCollection.Keys.get -> System.Collections.Generic.ICollection<string!>!
+Pipeware.QueryCollection.QueryCollection() -> void
+Pipeware.QueryCollection.QueryCollection(int capacity) -> void
+Pipeware.QueryCollection.QueryCollection(Pipeware.QueryCollection! store) -> void
+Pipeware.QueryCollection.QueryCollection(System.Collections.Generic.Dictionary<string!, Microsoft.Extensions.Primitives.StringValues>! store) -> void
+Pipeware.QueryCollection.this[string! key].get -> Microsoft.Extensions.Primitives.StringValues
+Pipeware.QueryCollection.TryGetValue(string! key, out Microsoft.Extensions.Primitives.StringValues value) -> bool
+Pipeware.QueryString
+Pipeware.QueryString.Add(Pipeware.QueryString other) -> Pipeware.QueryString
+Pipeware.QueryString.Add(string! name, string! value) -> Pipeware.QueryString
+Pipeware.QueryString.Equals(Pipeware.QueryString other) -> bool
+Pipeware.QueryString.HasValue.get -> bool
+Pipeware.QueryString.QueryString() -> void
+Pipeware.QueryString.QueryString(string? value) -> void
+Pipeware.QueryString.ToUriComponent() -> string!
+Pipeware.QueryString.Value.get -> string?
+Pipeware.RequestContextFeatureExtensions
+Pipeware.RequestDelegate<TRequestContext>
+Pipeware.RequestDelegateFactory<TRequestContext>
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.EndpointBuilder.get -> Pipeware.Builder.EndpointBuilder<TRequestContext!>?
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.EndpointBuilder.init -> void
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.RequestDelegateFactoryOptions() -> void
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.RouteParameterNames.get -> System.Collections.Generic.IEnumerable<string!>?
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.RouteParameterNames.init -> void
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.ServiceProvider.get -> System.IServiceProvider?
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.ServiceProvider.init -> void
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.ThrowOnBadRequest.get -> bool
+Pipeware.RequestDelegateFactoryOptions<TRequestContext>.ThrowOnBadRequest.init -> void
+Pipeware.RequestDelegateMetadataResult
+Pipeware.RequestDelegateMetadataResult.EndpointMetadata.get -> System.Collections.Generic.IReadOnlyList<object!>!
+Pipeware.RequestDelegateMetadataResult.EndpointMetadata.init -> void
+Pipeware.RequestDelegateMetadataResult.RequestDelegateMetadataResult() -> void
+Pipeware.RequestDelegateResult<TRequestContext>
+Pipeware.RequestDelegateResult<TRequestContext>.EndpointMetadata.get -> System.Collections.Generic.IReadOnlyList<object!>!
+Pipeware.RequestDelegateResult<TRequestContext>.RequestDelegate.get -> Pipeware.RequestDelegate<TRequestContext!>!
+Pipeware.RequestDelegateResult<TRequestContext>.RequestDelegateResult(Pipeware.RequestDelegate<TRequestContext!>! requestDelegate, System.Collections.Generic.IReadOnlyList<object!>! metadata) -> void
+Pipeware.Results.EmptyResult<TRequestContext>
+Pipeware.Results.EmptyResult<TRequestContext>.ExecuteAsync(TRequestContext! requestContext) -> System.Threading.Tasks.Task!
+Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>
+Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>.CompositeEndpointDataSource(System.Collections.Generic.IEnumerable<Pipeware.Routing.EndpointDataSource<TRequestContext!>!>! endpointDataSources) -> void
+Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>.DataSources.get -> System.Collections.Generic.IEnumerable<Pipeware.Routing.EndpointDataSource<TRequestContext!>!>!
+Pipeware.Routing.CompositeEndpointDataSource<TRequestContext>.Dispose() -> void
+Pipeware.Routing.Constraints.AlphaRouteConstraint
+Pipeware.Routing.Constraints.AlphaRouteConstraint.AlphaRouteConstraint() -> void
+Pipeware.Routing.Constraints.BoolRouteConstraint
+Pipeware.Routing.Constraints.BoolRouteConstraint.BoolRouteConstraint() -> void
+Pipeware.Routing.Constraints.BoolRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.CompositeRouteConstraint
+Pipeware.Routing.Constraints.CompositeRouteConstraint.CompositeRouteConstraint(System.Collections.Generic.IEnumerable<Pipeware.Routing.IRouteConstraint!>! constraints) -> void
+Pipeware.Routing.Constraints.CompositeRouteConstraint.Constraints.get -> System.Collections.Generic.IEnumerable<Pipeware.Routing.IRouteConstraint!>!
+Pipeware.Routing.Constraints.CompositeRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.DateTimeRouteConstraint
+Pipeware.Routing.Constraints.DateTimeRouteConstraint.DateTimeRouteConstraint() -> void
+Pipeware.Routing.Constraints.DateTimeRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.DecimalRouteConstraint
+Pipeware.Routing.Constraints.DecimalRouteConstraint.DecimalRouteConstraint() -> void
+Pipeware.Routing.Constraints.DecimalRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.DoubleRouteConstraint
+Pipeware.Routing.Constraints.DoubleRouteConstraint.DoubleRouteConstraint() -> void
+Pipeware.Routing.Constraints.DoubleRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.FileNameRouteConstraint
+Pipeware.Routing.Constraints.FileNameRouteConstraint.FileNameRouteConstraint() -> void
+Pipeware.Routing.Constraints.FileNameRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.FloatRouteConstraint
+Pipeware.Routing.Constraints.FloatRouteConstraint.FloatRouteConstraint() -> void
+Pipeware.Routing.Constraints.FloatRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.GuidRouteConstraint
+Pipeware.Routing.Constraints.GuidRouteConstraint.GuidRouteConstraint() -> void
+Pipeware.Routing.Constraints.GuidRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.IntRouteConstraint
+Pipeware.Routing.Constraints.IntRouteConstraint.IntRouteConstraint() -> void
+Pipeware.Routing.Constraints.IntRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.LengthRouteConstraint
+Pipeware.Routing.Constraints.LengthRouteConstraint.LengthRouteConstraint(int length) -> void
+Pipeware.Routing.Constraints.LengthRouteConstraint.LengthRouteConstraint(int minLength, int maxLength) -> void
+Pipeware.Routing.Constraints.LengthRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.LengthRouteConstraint.MaxLength.get -> int
+Pipeware.Routing.Constraints.LengthRouteConstraint.MinLength.get -> int
+Pipeware.Routing.Constraints.LongRouteConstraint
+Pipeware.Routing.Constraints.LongRouteConstraint.LongRouteConstraint() -> void
+Pipeware.Routing.Constraints.LongRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.MaxLengthRouteConstraint
+Pipeware.Routing.Constraints.MaxLengthRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.MaxLengthRouteConstraint.MaxLength.get -> int
+Pipeware.Routing.Constraints.MaxLengthRouteConstraint.MaxLengthRouteConstraint(int maxLength) -> void
+Pipeware.Routing.Constraints.MaxRouteConstraint
+Pipeware.Routing.Constraints.MaxRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.MaxRouteConstraint.Max.get -> long
+Pipeware.Routing.Constraints.MaxRouteConstraint.MaxRouteConstraint(long max) -> void
+Pipeware.Routing.Constraints.MinLengthRouteConstraint
+Pipeware.Routing.Constraints.MinLengthRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.MinLengthRouteConstraint.MinLength.get -> int
+Pipeware.Routing.Constraints.MinLengthRouteConstraint.MinLengthRouteConstraint(int minLength) -> void
+Pipeware.Routing.Constraints.MinRouteConstraint
+Pipeware.Routing.Constraints.MinRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.MinRouteConstraint.Min.get -> long
+Pipeware.Routing.Constraints.MinRouteConstraint.MinRouteConstraint(long min) -> void
+Pipeware.Routing.Constraints.NonFileNameRouteConstraint
+Pipeware.Routing.Constraints.NonFileNameRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.NonFileNameRouteConstraint.NonFileNameRouteConstraint() -> void
+Pipeware.Routing.Constraints.OptionalRouteConstraint
+Pipeware.Routing.Constraints.OptionalRouteConstraint.InnerConstraint.get -> Pipeware.Routing.IRouteConstraint!
+Pipeware.Routing.Constraints.OptionalRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.OptionalRouteConstraint.OptionalRouteConstraint(Pipeware.Routing.IRouteConstraint! innerConstraint) -> void
+Pipeware.Routing.Constraints.RangeRouteConstraint
+Pipeware.Routing.Constraints.RangeRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.RangeRouteConstraint.Max.get -> long
+Pipeware.Routing.Constraints.RangeRouteConstraint.Min.get -> long
+Pipeware.Routing.Constraints.RangeRouteConstraint.RangeRouteConstraint(long min, long max) -> void
+Pipeware.Routing.Constraints.RegexInlineRouteConstraint
+Pipeware.Routing.Constraints.RegexInlineRouteConstraint.RegexInlineRouteConstraint(string! regexPattern) -> void
+Pipeware.Routing.Constraints.RegexRouteConstraint
+Pipeware.Routing.Constraints.RegexRouteConstraint.Constraint.get -> System.Text.RegularExpressions.Regex!
+Pipeware.Routing.Constraints.RegexRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.RegexRouteConstraint.RegexRouteConstraint(string! regexPattern) -> void
+Pipeware.Routing.Constraints.RegexRouteConstraint.RegexRouteConstraint(System.Text.RegularExpressions.Regex! regex) -> void
+Pipeware.Routing.Constraints.RequiredRouteConstraint
+Pipeware.Routing.Constraints.RequiredRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.Constraints.RequiredRouteConstraint.RequiredRouteConstraint() -> void
+Pipeware.Routing.DefaultInlineConstraintResolver<TRequestContext>
+Pipeware.Routing.DefaultInlineConstraintResolver<TRequestContext>.DefaultInlineConstraintResolver(Microsoft.Extensions.Options.IOptions<Pipeware.Routing.RouteOptions<TRequestContext!>!>! routeOptions, System.IServiceProvider! serviceProvider) -> void
+Pipeware.Routing.EndpointDataSource<TRequestContext>
+Pipeware.Routing.EndpointDataSource<TRequestContext>.EndpointDataSource() -> void
+Pipeware.Routing.EndpointGroupNameAttribute
+Pipeware.Routing.EndpointGroupNameAttribute.EndpointGroupName.get -> string!
+Pipeware.Routing.EndpointGroupNameAttribute.EndpointGroupNameAttribute(string! endpointGroupName) -> void
+Pipeware.Routing.EndpointNameMetadata
+Pipeware.Routing.EndpointNameMetadata.EndpointName.get -> string!
+Pipeware.Routing.EndpointNameMetadata.EndpointNameMetadata(string! endpointName) -> void
+Pipeware.Routing.IDynamicEndpointMetadata
+Pipeware.Routing.IDynamicEndpointMetadata.IsDynamic.get -> bool
+Pipeware.Routing.IEndpointAddressScheme<TAddress, TRequestContext>
+Pipeware.Routing.IEndpointAddressScheme<TAddress, TRequestContext>.FindEndpoints(TAddress address) -> System.Collections.Generic.IEnumerable<Pipeware.Endpoint<TRequestContext!>!>!
+Pipeware.Routing.IEndpointGroupNameMetadata
+Pipeware.Routing.IEndpointGroupNameMetadata.EndpointGroupName.get -> string!
+Pipeware.Routing.IEndpointNameMetadata
+Pipeware.Routing.IEndpointNameMetadata.EndpointName.get -> string!
+Pipeware.Routing.IEndpointRouteBuilder<TRequestContext, TSelf>
+Pipeware.Routing.IEndpointRouteBuilder<TRequestContext>
+Pipeware.Routing.IEndpointRouteBuilder<TRequestContext>.CreateApplicationBuilder() -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+Pipeware.Routing.IEndpointRouteBuilder<TRequestContext>.DataSources.get -> System.Collections.Generic.ICollection<Pipeware.Routing.EndpointDataSource<TRequestContext!>!>!
+Pipeware.Routing.IEndpointRouteBuilder<TRequestContext>.ServiceProvider.get -> System.IServiceProvider!
+Pipeware.Routing.IInlineConstraintResolver
+Pipeware.Routing.IInlineConstraintResolver.ResolveConstraint(string! inlineConstraint) -> Pipeware.Routing.IRouteConstraint?
+Pipeware.Routing.IInlineConstraintResolver<TRequestContext>
+Pipeware.Routing.Internal.DfaGraphWriter<TRequestContext>
+Pipeware.Routing.Internal.DfaGraphWriter<TRequestContext>.DfaGraphWriter(System.IServiceProvider! services) -> void
+Pipeware.Routing.Internal.DfaGraphWriter<TRequestContext>.Write(Pipeware.Routing.EndpointDataSource<TRequestContext!>! dataSource, System.IO.TextWriter! writer) -> void
+Pipeware.Routing.IOutboundParameterTransformer
+Pipeware.Routing.IOutboundParameterTransformer.TransformOutbound(object? value) -> string?
+Pipeware.Routing.IParameterPolicy
+Pipeware.Routing.IRouteConstraint
+Pipeware.Routing.IRouteConstraint.Match(Pipeware.IRequestContext? requestContext, Pipeware.Routing.IRouter? route, string! routeKey, Pipeware.Routing.RouteValueDictionary! values, Pipeware.Routing.RouteDirection routeDirection) -> bool
+Pipeware.Routing.IRouteNameMetadata
+Pipeware.Routing.IRouteNameMetadata.RouteName.get -> string?
+Pipeware.Routing.IRouter
+Pipeware.Routing.IRouter.GetVirtualPath(Pipeware.Routing.VirtualPathContext! context) -> Pipeware.Routing.VirtualPathData?
+Pipeware.Routing.IRouter.RouteAsync(Pipeware.Routing.RouteContext! context) -> System.Threading.Tasks.Task!
+Pipeware.Routing.ISuppressLinkGenerationMetadata
+Pipeware.Routing.ISuppressLinkGenerationMetadata.SuppressLinkGeneration.get -> bool
+Pipeware.Routing.ISuppressMatchingMetadata
+Pipeware.Routing.ISuppressMatchingMetadata.SuppressMatching.get -> bool
+Pipeware.Routing.LinkGenerator<TRequestContext>
+Pipeware.Routing.LinkGenerator<TRequestContext>.LinkGenerator() -> void
+Pipeware.Routing.LinkGeneratorEndpointNameAddressExtensions
+Pipeware.Routing.LinkOptions
+Pipeware.Routing.LinkOptions.AppendTrailingSlash.get -> bool?
+Pipeware.Routing.LinkOptions.AppendTrailingSlash.set -> void
+Pipeware.Routing.LinkOptions.LinkOptions() -> void
+Pipeware.Routing.LinkOptions.LowercaseQueryStrings.get -> bool?
+Pipeware.Routing.LinkOptions.LowercaseQueryStrings.set -> void
+Pipeware.Routing.LinkOptions.LowercaseUrls.get -> bool?
+Pipeware.Routing.LinkOptions.LowercaseUrls.set -> void
+Pipeware.Routing.LinkParser
+Pipeware.Routing.LinkParser.LinkParser() -> void
+Pipeware.Routing.MatcherPolicy<TRequestContext>
+Pipeware.Routing.MatcherPolicy<TRequestContext>.MatcherPolicy() -> void
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.CandidateSet(Pipeware.Endpoint<TRequestContext!>![]! endpoints, Pipeware.Routing.RouteValueDictionary![]! values, int[]! scores) -> void
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.Count.get -> int
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.ExpandEndpoint(int index, System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>! endpoints, System.Collections.Generic.IComparer<Pipeware.Endpoint<TRequestContext!>!>! comparer) -> void
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.IsValidCandidate(int index) -> bool
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.ReplaceEndpoint(int index, Pipeware.Endpoint<TRequestContext!>? endpoint, Pipeware.Routing.RouteValueDictionary? values) -> void
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.SetValidity(int index, bool value) -> void
+Pipeware.Routing.Matching.CandidateSet<TRequestContext>.this[int index].get -> Pipeware.Routing.Matching.CandidateState<TRequestContext!>
+Pipeware.Routing.Matching.CandidateState<TRequestContext>
+Pipeware.Routing.Matching.CandidateState<TRequestContext>.CandidateState() -> void
+Pipeware.Routing.Matching.CandidateState<TRequestContext>.Endpoint.get -> Pipeware.Endpoint<TRequestContext!>!
+Pipeware.Routing.Matching.CandidateState<TRequestContext>.Score.get -> int
+Pipeware.Routing.Matching.CandidateState<TRequestContext>.Values.get -> Pipeware.Routing.RouteValueDictionary?
+Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata, TRequestContext>
+Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata, TRequestContext>.Compare(Pipeware.Endpoint<TRequestContext!>? x, Pipeware.Endpoint<TRequestContext!>? y) -> int
+Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata, TRequestContext>.EndpointMetadataComparer() -> void
+Pipeware.Routing.Matching.EndpointMetadataComparer<TRequestContext>
+Pipeware.Routing.Matching.EndpointSelector<TRequestContext>
+Pipeware.Routing.Matching.EndpointSelector<TRequestContext>.EndpointSelector() -> void
+Pipeware.Routing.Matching.IEndpointComparerPolicy<TRequestContext>
+Pipeware.Routing.Matching.IEndpointComparerPolicy<TRequestContext>.Comparer.get -> System.Collections.Generic.IComparer<Pipeware.Endpoint<TRequestContext!>!>!
+Pipeware.Routing.Matching.IEndpointSelectorPolicy<TRequestContext>
+Pipeware.Routing.Matching.IEndpointSelectorPolicy<TRequestContext>.AppliesToEndpoints(System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>! endpoints) -> bool
+Pipeware.Routing.Matching.IEndpointSelectorPolicy<TRequestContext>.ApplyAsync(TRequestContext! requestContext, Pipeware.Routing.Matching.CandidateSet<TRequestContext!>! candidates) -> System.Threading.Tasks.Task!
+Pipeware.Routing.Matching.INodeBuilderPolicy<TRequestContext>
+Pipeware.Routing.Matching.INodeBuilderPolicy<TRequestContext>.AppliesToEndpoints(System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>! endpoints) -> bool
+Pipeware.Routing.Matching.INodeBuilderPolicy<TRequestContext>.BuildJumpTable(int exitDestination, System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Matching.PolicyJumpTableEdge>! edges) -> Pipeware.Routing.Matching.PolicyJumpTable<TRequestContext!>!
+Pipeware.Routing.Matching.INodeBuilderPolicy<TRequestContext>.GetEdges(System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>! endpoints) -> System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Matching.PolicyNodeEdge<TRequestContext!>>!
+Pipeware.Routing.Matching.IParameterLiteralNodeMatchingPolicy
+Pipeware.Routing.Matching.IParameterLiteralNodeMatchingPolicy.MatchesLiteral(string! parameterName, string! literal) -> bool
+Pipeware.Routing.Matching.PolicyJumpTable<TRequestContext>
+Pipeware.Routing.Matching.PolicyJumpTable<TRequestContext>.PolicyJumpTable() -> void
+Pipeware.Routing.Matching.PolicyJumpTableEdge
+Pipeware.Routing.Matching.PolicyJumpTableEdge.Destination.get -> int
+Pipeware.Routing.Matching.PolicyJumpTableEdge.PolicyJumpTableEdge() -> void
+Pipeware.Routing.Matching.PolicyJumpTableEdge.PolicyJumpTableEdge(object! state, int destination) -> void
+Pipeware.Routing.Matching.PolicyJumpTableEdge.State.get -> object!
+Pipeware.Routing.Matching.PolicyNodeEdge<TRequestContext>
+Pipeware.Routing.Matching.PolicyNodeEdge<TRequestContext>.Endpoints.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>!
+Pipeware.Routing.Matching.PolicyNodeEdge<TRequestContext>.PolicyNodeEdge() -> void
+Pipeware.Routing.Matching.PolicyNodeEdge<TRequestContext>.PolicyNodeEdge(object! state, System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>! endpoints) -> void
+Pipeware.Routing.Matching.PolicyNodeEdge<TRequestContext>.State.get -> object!
+Pipeware.Routing.ParameterPolicyFactory<TRequestContext>
+Pipeware.Routing.ParameterPolicyFactory<TRequestContext>.Create(Pipeware.Routing.Patterns.RoutePatternParameterPart? parameter, Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference! reference) -> Pipeware.Routing.IParameterPolicy!
+Pipeware.Routing.ParameterPolicyFactory<TRequestContext>.ParameterPolicyFactory() -> void
+Pipeware.Routing.Patterns.RoutePattern
+Pipeware.Routing.Patterns.RoutePattern.Defaults.get -> System.Collections.Generic.IReadOnlyDictionary<string!, object?>!
+Pipeware.Routing.Patterns.RoutePattern.GetParameter(string! name) -> Pipeware.Routing.Patterns.RoutePatternParameterPart?
+Pipeware.Routing.Patterns.RoutePattern.InboundPrecedence.get -> decimal
+Pipeware.Routing.Patterns.RoutePattern.OutboundPrecedence.get -> decimal
+Pipeware.Routing.Patterns.RoutePattern.ParameterPolicies.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!>!>!
+Pipeware.Routing.Patterns.RoutePattern.Parameters.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Patterns.RoutePatternParameterPart!>!
+Pipeware.Routing.Patterns.RoutePattern.PathSegments.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Patterns.RoutePatternPathSegment!>!
+Pipeware.Routing.Patterns.RoutePattern.RawText.get -> string?
+Pipeware.Routing.Patterns.RoutePattern.RequiredValues.get -> System.Collections.Generic.IReadOnlyDictionary<string!, object?>!
+Pipeware.Routing.Patterns.RoutePatternException
+Pipeware.Routing.Patterns.RoutePatternException.Pattern.get -> string!
+Pipeware.Routing.Patterns.RoutePatternException.RoutePatternException(string! pattern, string! message) -> void
+Pipeware.Routing.Patterns.RoutePatternFactory
+Pipeware.Routing.Patterns.RoutePatternLiteralPart
+Pipeware.Routing.Patterns.RoutePatternLiteralPart.Content.get -> string!
+Pipeware.Routing.Patterns.RoutePatternParameterKind
+Pipeware.Routing.Patterns.RoutePatternParameterKind.CatchAll = 2 -> Pipeware.Routing.Patterns.RoutePatternParameterKind
+Pipeware.Routing.Patterns.RoutePatternParameterKind.Optional = 1 -> Pipeware.Routing.Patterns.RoutePatternParameterKind
+Pipeware.Routing.Patterns.RoutePatternParameterKind.Standard = 0 -> Pipeware.Routing.Patterns.RoutePatternParameterKind
+Pipeware.Routing.Patterns.RoutePatternParameterPart
+Pipeware.Routing.Patterns.RoutePatternParameterPart.Default.get -> object?
+Pipeware.Routing.Patterns.RoutePatternParameterPart.EncodeSlashes.get -> bool
+Pipeware.Routing.Patterns.RoutePatternParameterPart.IsCatchAll.get -> bool
+Pipeware.Routing.Patterns.RoutePatternParameterPart.IsOptional.get -> bool
+Pipeware.Routing.Patterns.RoutePatternParameterPart.Name.get -> string!
+Pipeware.Routing.Patterns.RoutePatternParameterPart.ParameterKind.get -> Pipeware.Routing.Patterns.RoutePatternParameterKind
+Pipeware.Routing.Patterns.RoutePatternParameterPart.ParameterPolicies.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!>!
+Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference
+Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference.Content.get -> string?
+Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference.ParameterPolicy.get -> Pipeware.Routing.IParameterPolicy?
+Pipeware.Routing.Patterns.RoutePatternPart
+Pipeware.Routing.Patterns.RoutePatternPart.IsLiteral.get -> bool
+Pipeware.Routing.Patterns.RoutePatternPart.IsParameter.get -> bool
+Pipeware.Routing.Patterns.RoutePatternPart.IsSeparator.get -> bool
+Pipeware.Routing.Patterns.RoutePatternPart.PartKind.get -> Pipeware.Routing.Patterns.RoutePatternPartKind
+Pipeware.Routing.Patterns.RoutePatternPartKind
+Pipeware.Routing.Patterns.RoutePatternPartKind.Literal = 0 -> Pipeware.Routing.Patterns.RoutePatternPartKind
+Pipeware.Routing.Patterns.RoutePatternPartKind.Parameter = 1 -> Pipeware.Routing.Patterns.RoutePatternPartKind
+Pipeware.Routing.Patterns.RoutePatternPartKind.Separator = 2 -> Pipeware.Routing.Patterns.RoutePatternPartKind
+Pipeware.Routing.Patterns.RoutePatternPathSegment
+Pipeware.Routing.Patterns.RoutePatternPathSegment.IsSimple.get -> bool
+Pipeware.Routing.Patterns.RoutePatternPathSegment.Parts.get -> System.Collections.Generic.IReadOnlyList<Pipeware.Routing.Patterns.RoutePatternPart!>!
+Pipeware.Routing.Patterns.RoutePatternSeparatorPart
+Pipeware.Routing.Patterns.RoutePatternSeparatorPart.Content.get -> string!
+Pipeware.Routing.Patterns.RoutePatternTransformer<TRequestContext>
+Pipeware.Routing.Patterns.RoutePatternTransformer<TRequestContext>.RoutePatternTransformer() -> void
+Pipeware.Routing.RouteConstraintBuilder
+Pipeware.Routing.RouteConstraintBuilder.AddConstraint(string! key, object! value) -> void
+Pipeware.Routing.RouteConstraintBuilder.AddResolvedConstraint(string! key, string! constraintText) -> void
+Pipeware.Routing.RouteConstraintBuilder.Build() -> System.Collections.Generic.IDictionary<string!, Pipeware.Routing.IRouteConstraint!>!
+Pipeware.Routing.RouteConstraintBuilder.RouteConstraintBuilder(Pipeware.Routing.IInlineConstraintResolver! inlineConstraintResolver, string! displayName) -> void
+Pipeware.Routing.RouteConstraintBuilder.SetOptional(string! key) -> void
+Pipeware.Routing.RouteConstraintMatcher
+Pipeware.Routing.RouteContext
+Pipeware.Routing.RouteContext.Handler.get -> Pipeware.RequestDelegate<Pipeware.IRequestContext!>?
+Pipeware.Routing.RouteContext.Handler.set -> void
+Pipeware.Routing.RouteContext.RequestContext.get -> Pipeware.IRequestContext!
+Pipeware.Routing.RouteContext.RouteContext(Pipeware.IRequestContext? requestContext) -> void
+Pipeware.Routing.RouteContext.RouteData.get -> Pipeware.Routing.RouteData!
+Pipeware.Routing.RouteContext.RouteData.set -> void
+Pipeware.Routing.RouteCreationException
+Pipeware.Routing.RouteCreationException.RouteCreationException(string! message) -> void
+Pipeware.Routing.RouteCreationException.RouteCreationException(string! message, System.Exception! innerException) -> void
+Pipeware.Routing.RouteData
+Pipeware.Routing.RouteData.DataTokens.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.RouteData.PushState(Pipeware.Routing.IRouter? router, Pipeware.Routing.RouteValueDictionary? values, Pipeware.Routing.RouteValueDictionary? dataTokens) -> Pipeware.Routing.RouteData.RouteDataSnapshot
+Pipeware.Routing.RouteData.RouteData() -> void
+Pipeware.Routing.RouteData.RouteData(Pipeware.Routing.RouteData! other) -> void
+Pipeware.Routing.RouteData.RouteData(Pipeware.Routing.RouteValueDictionary! values) -> void
+Pipeware.Routing.RouteData.RouteDataSnapshot
+Pipeware.Routing.RouteData.RouteDataSnapshot.Restore() -> void
+Pipeware.Routing.RouteData.RouteDataSnapshot.RouteDataSnapshot() -> void
+Pipeware.Routing.RouteData.RouteDataSnapshot.RouteDataSnapshot(Pipeware.Routing.RouteData! routeData, Pipeware.Routing.RouteValueDictionary? dataTokens, System.Collections.Generic.IList<Pipeware.Routing.IRouter!>? routers, Pipeware.Routing.RouteValueDictionary? values) -> void
+Pipeware.Routing.RouteData.Routers.get -> System.Collections.Generic.IList<Pipeware.Routing.IRouter!>!
+Pipeware.Routing.RouteData.Values.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.RouteDirection
+Pipeware.Routing.RouteDirection.IncomingRequest = 0 -> Pipeware.Routing.RouteDirection
+Pipeware.Routing.RouteDirection.UrlGeneration = 1 -> Pipeware.Routing.RouteDirection
+Pipeware.Routing.RouteEndpoint<TRequestContext>
+Pipeware.Routing.RouteEndpoint<TRequestContext>.Order.get -> int
+Pipeware.Routing.RouteEndpoint<TRequestContext>.RouteEndpoint(Pipeware.RequestDelegate<TRequestContext!>! requestDelegate, Pipeware.Routing.Patterns.RoutePattern! routePattern, int order, Pipeware.EndpointMetadataCollection? metadata, string? displayName) -> void
+Pipeware.Routing.RouteEndpoint<TRequestContext>.RoutePattern.get -> Pipeware.Routing.Patterns.RoutePattern!
+Pipeware.Routing.RouteEndpointBuilder<TRequestContext>
+Pipeware.Routing.RouteEndpointBuilder<TRequestContext>.Order.get -> int
+Pipeware.Routing.RouteEndpointBuilder<TRequestContext>.Order.set -> void
+Pipeware.Routing.RouteEndpointBuilder<TRequestContext>.RouteEndpointBuilder(Pipeware.RequestDelegate<TRequestContext!>? requestDelegate, Pipeware.Routing.Patterns.RoutePattern! routePattern, int order) -> void
+Pipeware.Routing.RouteEndpointBuilder<TRequestContext>.RoutePattern.get -> Pipeware.Routing.Patterns.RoutePattern!
+Pipeware.Routing.RouteEndpointBuilder<TRequestContext>.RoutePattern.set -> void
+Pipeware.Routing.RouteGroupBuilder<TRequestContext>
+Pipeware.Routing.RouteGroupContext<TRequestContext>
+Pipeware.Routing.RouteGroupContext<TRequestContext>.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.Routing.RouteGroupContext<TRequestContext>.ApplicationServices.init -> void
+Pipeware.Routing.RouteGroupContext<TRequestContext>.Conventions.get -> System.Collections.Generic.IReadOnlyList<System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>!>!
+Pipeware.Routing.RouteGroupContext<TRequestContext>.Conventions.init -> void
+Pipeware.Routing.RouteGroupContext<TRequestContext>.FinallyConventions.get -> System.Collections.Generic.IReadOnlyList<System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>!>!
+Pipeware.Routing.RouteGroupContext<TRequestContext>.FinallyConventions.init -> void
+Pipeware.Routing.RouteGroupContext<TRequestContext>.Prefix.get -> Pipeware.Routing.Patterns.RoutePattern!
+Pipeware.Routing.RouteGroupContext<TRequestContext>.Prefix.init -> void
+Pipeware.Routing.RouteGroupContext<TRequestContext>.RouteGroupContext() -> void
+Pipeware.Routing.RouteHandlerOptions
+Pipeware.Routing.RouteHandlerOptions.RouteHandlerOptions() -> void
+Pipeware.Routing.RouteHandlerOptions.ThrowOnBadRequest.get -> bool
+Pipeware.Routing.RouteHandlerOptions.ThrowOnBadRequest.set -> void
+Pipeware.Routing.RouteNameMetadata
+Pipeware.Routing.RouteNameMetadata.RouteName.get -> string?
+Pipeware.Routing.RouteNameMetadata.RouteNameMetadata(string? routeName) -> void
+Pipeware.Routing.RouteOptions<TRequestContext>
+Pipeware.Routing.RouteOptions<TRequestContext>.AppendTrailingSlash.get -> bool
+Pipeware.Routing.RouteOptions<TRequestContext>.AppendTrailingSlash.set -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.ConstraintMap.get -> System.Collections.Generic.IDictionary<string!, System.Type!>!
+Pipeware.Routing.RouteOptions<TRequestContext>.ConstraintMap.set -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.LowercaseQueryStrings.get -> bool
+Pipeware.Routing.RouteOptions<TRequestContext>.LowercaseQueryStrings.set -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.LowercaseUrls.get -> bool
+Pipeware.Routing.RouteOptions<TRequestContext>.LowercaseUrls.set -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.RouteOptions() -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.SetParameterPolicy(string! token, System.Type! type) -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.SetParameterPolicy<T>(string! token) -> void
+Pipeware.Routing.RouteOptions<TRequestContext>.SuppressCheckForUnhandledSecurityMetadata.get -> bool
+Pipeware.Routing.RouteOptions<TRequestContext>.SuppressCheckForUnhandledSecurityMetadata.set -> void
+Pipeware.Routing.RouteValueDictionary
+Pipeware.Routing.RouteValueDictionary.Add(string! key, object? value) -> void
+Pipeware.Routing.RouteValueDictionary.Clear() -> void
+Pipeware.Routing.RouteValueDictionary.Comparer.get -> System.Collections.Generic.IEqualityComparer<string!>!
+Pipeware.Routing.RouteValueDictionary.ContainsKey(string! key) -> bool
+Pipeware.Routing.RouteValueDictionary.Count.get -> int
+Pipeware.Routing.RouteValueDictionary.Enumerator
+Pipeware.Routing.RouteValueDictionary.Enumerator.Current.get -> System.Collections.Generic.KeyValuePair<string!, object?>
+Pipeware.Routing.RouteValueDictionary.Enumerator.Dispose() -> void
+Pipeware.Routing.RouteValueDictionary.Enumerator.Enumerator() -> void
+Pipeware.Routing.RouteValueDictionary.Enumerator.Enumerator(Pipeware.Routing.RouteValueDictionary! dictionary) -> void
+Pipeware.Routing.RouteValueDictionary.Enumerator.MoveNext() -> bool
+Pipeware.Routing.RouteValueDictionary.Enumerator.Reset() -> void
+Pipeware.Routing.RouteValueDictionary.GetEnumerator() -> Pipeware.Routing.RouteValueDictionary.Enumerator
+Pipeware.Routing.RouteValueDictionary.Keys.get -> System.Collections.Generic.ICollection<string!>!
+Pipeware.Routing.RouteValueDictionary.Remove(string! key) -> bool
+Pipeware.Routing.RouteValueDictionary.Remove(string! key, out object? value) -> bool
+Pipeware.Routing.RouteValueDictionary.RouteValueDictionary() -> void
+Pipeware.Routing.RouteValueDictionary.RouteValueDictionary(object? values) -> void
+Pipeware.Routing.RouteValueDictionary.RouteValueDictionary(Pipeware.Routing.RouteValueDictionary? dictionary) -> void
+Pipeware.Routing.RouteValueDictionary.RouteValueDictionary(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, object?>>? values) -> void
+Pipeware.Routing.RouteValueDictionary.RouteValueDictionary(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, string?>>? values) -> void
+Pipeware.Routing.RouteValueDictionary.this[string! key].get -> object?
+Pipeware.Routing.RouteValueDictionary.this[string! key].set -> void
+Pipeware.Routing.RouteValueDictionary.TryAdd(string! key, object? value) -> bool
+Pipeware.Routing.RouteValueDictionary.TryGetValue(string! key, out object? value) -> bool
+Pipeware.Routing.RouteValueDictionary.Values.get -> System.Collections.Generic.ICollection<object?>!
+Pipeware.Routing.RouteValueEqualityComparer
+Pipeware.Routing.RouteValueEqualityComparer.Equals(object? x, object? y) -> bool
+Pipeware.Routing.RouteValueEqualityComparer.GetHashCode(object! obj) -> int
+Pipeware.Routing.RouteValueEqualityComparer.RouteValueEqualityComparer() -> void
+Pipeware.Routing.RouteValuesAddress
+Pipeware.Routing.RouteValuesAddress.AmbientValues.get -> Pipeware.Routing.RouteValueDictionary?
+Pipeware.Routing.RouteValuesAddress.AmbientValues.set -> void
+Pipeware.Routing.RouteValuesAddress.ExplicitValues.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.RouteValuesAddress.ExplicitValues.set -> void
+Pipeware.Routing.RouteValuesAddress.RouteName.get -> string?
+Pipeware.Routing.RouteValuesAddress.RouteName.set -> void
+Pipeware.Routing.RouteValuesAddress.RouteValuesAddress() -> void
+Pipeware.Routing.RoutingServiceCollectionExtensions
+Pipeware.Routing.Template.InlineConstraint
+Pipeware.Routing.Template.InlineConstraint.Constraint.get -> string!
+Pipeware.Routing.Template.InlineConstraint.InlineConstraint(Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference! other) -> void
+Pipeware.Routing.Template.InlineConstraint.InlineConstraint(string! constraint) -> void
+Pipeware.Routing.Template.RoutePrecedence
+Pipeware.Routing.Template.RouteTemplate
+Pipeware.Routing.Template.RouteTemplate.GetParameter(string! name) -> Pipeware.Routing.Template.TemplatePart?
+Pipeware.Routing.Template.RouteTemplate.GetSegment(int index) -> Pipeware.Routing.Template.TemplateSegment?
+Pipeware.Routing.Template.RouteTemplate.Parameters.get -> System.Collections.Generic.IList<Pipeware.Routing.Template.TemplatePart!>!
+Pipeware.Routing.Template.RouteTemplate.RouteTemplate(Pipeware.Routing.Patterns.RoutePattern! other) -> void
+Pipeware.Routing.Template.RouteTemplate.RouteTemplate(string! template, System.Collections.Generic.List<Pipeware.Routing.Template.TemplateSegment!>! segments) -> void
+Pipeware.Routing.Template.RouteTemplate.Segments.get -> System.Collections.Generic.IList<Pipeware.Routing.Template.TemplateSegment!>!
+Pipeware.Routing.Template.RouteTemplate.TemplateText.get -> string?
+Pipeware.Routing.Template.RouteTemplate.ToRoutePattern() -> Pipeware.Routing.Patterns.RoutePattern!
+Pipeware.Routing.Template.TemplateBinder
+Pipeware.Routing.Template.TemplateBinder.BindValues(Pipeware.Routing.RouteValueDictionary! acceptedValues) -> string?
+Pipeware.Routing.Template.TemplateBinder.GetValues(Pipeware.Routing.RouteValueDictionary? ambientValues, Pipeware.Routing.RouteValueDictionary! values) -> Pipeware.Routing.Template.TemplateValuesResult?
+Pipeware.Routing.Template.TemplateBinder.TryProcessConstraints(Pipeware.IRequestContext? requestContext, Pipeware.Routing.RouteValueDictionary! combinedValues, out string? parameterName, out Pipeware.Routing.IRouteConstraint? constraint) -> bool
+Pipeware.Routing.Template.TemplateBinderFactory<TRequestContext>
+Pipeware.Routing.Template.TemplateBinderFactory<TRequestContext>.TemplateBinderFactory() -> void
+Pipeware.Routing.Template.TemplateMatcher
+Pipeware.Routing.Template.TemplateMatcher.Defaults.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.Template.TemplateMatcher.Template.get -> Pipeware.Routing.Template.RouteTemplate!
+Pipeware.Routing.Template.TemplateMatcher.TemplateMatcher(Pipeware.Routing.Template.RouteTemplate! template, Pipeware.Routing.RouteValueDictionary! defaults) -> void
+Pipeware.Routing.Template.TemplateMatcher.TryMatch(Pipeware.PathString path, Pipeware.Routing.RouteValueDictionary! values) -> bool
+Pipeware.Routing.Template.TemplatePart
+Pipeware.Routing.Template.TemplatePart.DefaultValue.get -> object?
+Pipeware.Routing.Template.TemplatePart.InlineConstraints.get -> System.Collections.Generic.IEnumerable<Pipeware.Routing.Template.InlineConstraint!>!
+Pipeware.Routing.Template.TemplatePart.IsCatchAll.get -> bool
+Pipeware.Routing.Template.TemplatePart.IsLiteral.get -> bool
+Pipeware.Routing.Template.TemplatePart.IsOptional.get -> bool
+Pipeware.Routing.Template.TemplatePart.IsOptionalSeperator.get -> bool
+Pipeware.Routing.Template.TemplatePart.IsOptionalSeperator.set -> void
+Pipeware.Routing.Template.TemplatePart.IsParameter.get -> bool
+Pipeware.Routing.Template.TemplatePart.Name.get -> string?
+Pipeware.Routing.Template.TemplatePart.TemplatePart() -> void
+Pipeware.Routing.Template.TemplatePart.TemplatePart(Pipeware.Routing.Patterns.RoutePatternPart! other) -> void
+Pipeware.Routing.Template.TemplatePart.Text.get -> string?
+Pipeware.Routing.Template.TemplatePart.ToRoutePatternPart() -> Pipeware.Routing.Patterns.RoutePatternPart!
+Pipeware.Routing.Template.TemplateSegment
+Pipeware.Routing.Template.TemplateSegment.IsSimple.get -> bool
+Pipeware.Routing.Template.TemplateSegment.Parts.get -> System.Collections.Generic.List<Pipeware.Routing.Template.TemplatePart!>!
+Pipeware.Routing.Template.TemplateSegment.TemplateSegment() -> void
+Pipeware.Routing.Template.TemplateSegment.TemplateSegment(Pipeware.Routing.Patterns.RoutePatternPathSegment! other) -> void
+Pipeware.Routing.Template.TemplateSegment.ToRoutePatternPathSegment() -> Pipeware.Routing.Patterns.RoutePatternPathSegment!
+Pipeware.Routing.Template.TemplateValuesResult
+Pipeware.Routing.Template.TemplateValuesResult.AcceptedValues.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.Template.TemplateValuesResult.AcceptedValues.set -> void
+Pipeware.Routing.Template.TemplateValuesResult.CombinedValues.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.Template.TemplateValuesResult.CombinedValues.set -> void
+Pipeware.Routing.Template.TemplateValuesResult.TemplateValuesResult() -> void
+Pipeware.Routing.Tree.InboundMatch
+Pipeware.Routing.Tree.InboundMatch.InboundMatch() -> void
+Pipeware.Routing.Tree.InboundRouteEntry
+Pipeware.Routing.Tree.InboundRouteEntry.InboundRouteEntry() -> void
+Pipeware.Routing.Tree.InboundRouteEntry.Order.get -> int
+Pipeware.Routing.Tree.InboundRouteEntry.Order.set -> void
+Pipeware.Routing.Tree.InboundRouteEntry.Precedence.get -> decimal
+Pipeware.Routing.Tree.InboundRouteEntry.Precedence.set -> void
+Pipeware.Routing.Tree.OutboundMatch
+Pipeware.Routing.Tree.OutboundMatch.OutboundMatch() -> void
+Pipeware.Routing.Tree.OutboundRouteEntry
+Pipeware.Routing.Tree.OutboundRouteEntry.Order.get -> int
+Pipeware.Routing.Tree.OutboundRouteEntry.Order.set -> void
+Pipeware.Routing.Tree.OutboundRouteEntry.OutboundRouteEntry() -> void
+Pipeware.Routing.Tree.OutboundRouteEntry.Precedence.get -> decimal
+Pipeware.Routing.Tree.OutboundRouteEntry.Precedence.set -> void
+Pipeware.Routing.Tree.TreeRouteBuilder
+Pipeware.Routing.Tree.TreeRouteBuilder.Clear() -> void
+Pipeware.Routing.Tree.TreeRouter
+Pipeware.Routing.Tree.TreeRouter.Version.get -> int
+Pipeware.Routing.Tree.UrlMatchingNode
+Pipeware.Routing.Tree.UrlMatchingNode.Depth.get -> int
+Pipeware.Routing.Tree.UrlMatchingNode.IsCatchAll.get -> bool
+Pipeware.Routing.Tree.UrlMatchingNode.IsCatchAll.set -> void
+Pipeware.Routing.Tree.UrlMatchingNode.UrlMatchingNode(int length) -> void
+Pipeware.Routing.Tree.UrlMatchingTree
+Pipeware.Routing.Tree.UrlMatchingTree.Order.get -> int
+Pipeware.Routing.Tree.UrlMatchingTree.Root.get -> Pipeware.Routing.Tree.UrlMatchingNode!
+Pipeware.Routing.Tree.UrlMatchingTree.UrlMatchingTree(int order) -> void
+Pipeware.Routing.VirtualPathContext
+Pipeware.Routing.VirtualPathContext.AmbientValues.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.VirtualPathContext.RequestContext.get -> Pipeware.IRequestContext!
+Pipeware.Routing.VirtualPathContext.RouteName.get -> string?
+Pipeware.Routing.VirtualPathContext.Values.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.VirtualPathContext.Values.set -> void
+Pipeware.Routing.VirtualPathContext.VirtualPathContext(Pipeware.IRequestContext! requestContext, Pipeware.Routing.RouteValueDictionary! ambientValues, Pipeware.Routing.RouteValueDictionary! values) -> void
+Pipeware.Routing.VirtualPathContext.VirtualPathContext(Pipeware.IRequestContext! requestContext, Pipeware.Routing.RouteValueDictionary! ambientValues, Pipeware.Routing.RouteValueDictionary! values, string? routeName) -> void
+Pipeware.Routing.VirtualPathData
+Pipeware.Routing.VirtualPathData.DataTokens.get -> Pipeware.Routing.RouteValueDictionary!
+Pipeware.Routing.VirtualPathData.Router.get -> Pipeware.Routing.IRouter!
+Pipeware.Routing.VirtualPathData.Router.set -> void
+Pipeware.Routing.VirtualPathData.VirtualPath.get -> string!
+Pipeware.Routing.VirtualPathData.VirtualPath.set -> void
+Pipeware.Routing.VirtualPathData.VirtualPathData(Pipeware.Routing.IRouter! router, string! virtualPath) -> void
+Pipeware.Routing.VirtualPathData.VirtualPathData(Pipeware.Routing.IRouter! router, string! virtualPath, Pipeware.Routing.RouteValueDictionary? dataTokens) -> void
+static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, Pipeware.Routing.Patterns.RoutePattern! pattern, Pipeware.RequestDelegate<TRequestContext!>! requestDelegate) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, Pipeware.Routing.Patterns.RoutePattern! pattern, System.Delegate! handler) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, string! pattern, Pipeware.RequestDelegate<TRequestContext!>! requestDelegate) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, string! pattern, System.Delegate! handler) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.MapFallback<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, string! pattern, System.Delegate! handler) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.MapFallback<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, System.Delegate! handler) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.MapGroup<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, Pipeware.Routing.Patterns.RoutePattern! prefix) -> Pipeware.Routing.RouteGroupBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRouteBuilderExtensions.MapGroup<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, string! prefix) -> Pipeware.Routing.RouteGroupBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRoutingPipelineBuilderExtensions.UseEndpoints<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! builder, System.Action<Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>!>! configure) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.EndpointRoutingPipelineBuilderExtensions.UseRouting<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! builder) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.MapExtensions.Map<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, Pipeware.PathString pathMatch, bool preserveMatchedPathSegment, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.MapExtensions.Map<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, Pipeware.PathString pathMatch, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.MapExtensions.Map<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, string! pathMatch, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.MapWhenExtensions.MapWhen<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, System.Func<TRequestContext!, bool>! predicate, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, string! displayName) -> TBuilder
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Func<Pipeware.Builder.EndpointBuilder<TRequestContext!>!, string!>! func) -> TBuilder
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, string! displayName) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, System.Func<Pipeware.Builder.EndpointBuilder<TRequestContext!>!, string!>! func) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithGroupName<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, string! endpointGroupName) -> TBuilder
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithGroupName<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, string! endpointGroupName) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithMetadata<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, params object![]! items) -> TBuilder
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithMetadata<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, params object![]! items) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithName<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, string! endpointName) -> TBuilder
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithName<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, string! endpointName) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithOrder<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, int order) -> TBuilder
+static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithOrder<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, int order) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.Builder.RunExtensions.Run<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, Pipeware.RequestDelegate<TRequestContext!>! handler) -> void
+static Pipeware.Builder.UseExtensions.Use<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, System.Func<TRequestContext!, Pipeware.RequestDelegate<TRequestContext!>!, System.Threading.Tasks.Task!>! middleware) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.UseMiddlewareExtensions.UseMiddleware<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, System.Type! middleware, params object?[]! args) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, Pipeware.IEndpointFilter<TRequestContext!>! filter) -> TBuilder
+static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Func<Pipeware.EndpointFilterInvocationContext<TRequestContext!>!, Pipeware.EndpointFilterDelegate<TRequestContext!>!, System.Threading.Tasks.ValueTask<object?>>! routeHandlerFilter) -> TBuilder
+static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Type! filterType) -> TBuilder
+static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, Pipeware.IEndpointFilter<TRequestContext!>! filter) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, System.Func<Pipeware.EndpointFilterInvocationContext<TRequestContext!>!, Pipeware.EndpointFilterDelegate<TRequestContext!>!, System.Threading.Tasks.ValueTask<object?>>! routeHandlerFilter) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, System.Type! filterType) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.EndpointFilterExtensions.AddEndpointFilterFactory<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Func<Pipeware.EndpointFilterFactoryContext!, Pipeware.EndpointFilterDelegate<TRequestContext!>!, Pipeware.EndpointFilterDelegate<TRequestContext!>!>! filterFactory) -> TBuilder
+static Pipeware.EndpointFilterExtensions.AddEndpointFilterFactory<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, System.Func<Pipeware.EndpointFilterFactoryContext!, Pipeware.EndpointFilterDelegate<TRequestContext!>!, Pipeware.EndpointFilterDelegate<TRequestContext!>!>! filterFactory) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create(TRequestContext! requestContext) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2, T3, T4, T5, T6, T7, T8>(TRequestContext! requestContext, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2, T3, T4, T5, T6, T7>(TRequestContext! requestContext, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2, T3, T4, T5, T6>(TRequestContext! requestContext, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2, T3, T4, T5>(TRequestContext! requestContext, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2, T3, T4>(TRequestContext! requestContext, T1 arg1, T2 arg2, T3 arg3, T4 arg4) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2, T3>(TRequestContext! requestContext, T1 arg1, T2 arg2, T3 arg3) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T1, T2>(TRequestContext! requestContext, T1 arg1, T2 arg2) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointFilterInvocationContext<TRequestContext>.Create<T>(TRequestContext! requestContext, T arg) -> Pipeware.EndpointFilterInvocationContext<TRequestContext!>!
+static Pipeware.EndpointRequestContextExtensions.GetEndpoint<TRequestContext>(this TRequestContext! context) -> Pipeware.Endpoint<TRequestContext!>?
+static Pipeware.EndpointRequestContextExtensions.SetEndpoint<TRequestContext>(this TRequestContext! context, Pipeware.Endpoint<TRequestContext!>? endpoint) -> void
+static Pipeware.Extensions.UriHelper.BuildAbsolute(string! scheme, Pipeware.HostString host, Pipeware.PathString pathBase = default(Pipeware.PathString), Pipeware.PathString path = default(Pipeware.PathString), Pipeware.QueryString query = default(Pipeware.QueryString), Pipeware.FragmentString fragment = default(Pipeware.FragmentString)) -> string!
+static Pipeware.Extensions.UriHelper.BuildRelative(Pipeware.PathString pathBase = default(Pipeware.PathString), Pipeware.PathString path = default(Pipeware.PathString), Pipeware.QueryString query = default(Pipeware.QueryString), Pipeware.FragmentString fragment = default(Pipeware.FragmentString)) -> string!
+static Pipeware.Extensions.UriHelper.Encode(System.Uri! uri) -> string!
+static Pipeware.Extensions.UriHelper.FromAbsolute(string! uri, out string! scheme, out Pipeware.HostString host, out Pipeware.PathString path, out Pipeware.QueryString query, out Pipeware.FragmentString fragment) -> void
+static Pipeware.FragmentString.FromUriComponent(string! uriComponent) -> Pipeware.FragmentString
+static Pipeware.FragmentString.FromUriComponent(System.Uri! uri) -> Pipeware.FragmentString
+static Pipeware.FragmentString.operator !=(Pipeware.FragmentString left, Pipeware.FragmentString right) -> bool
+static Pipeware.FragmentString.operator ==(Pipeware.FragmentString left, Pipeware.FragmentString right) -> bool
+static Pipeware.HostString.FromUriComponent(string! uriComponent) -> Pipeware.HostString
+static Pipeware.HostString.FromUriComponent(System.Uri! uri) -> Pipeware.HostString
+static Pipeware.HostString.MatchesAny(Microsoft.Extensions.Primitives.StringSegment value, System.Collections.Generic.IList<Microsoft.Extensions.Primitives.StringSegment>! patterns) -> bool
+static Pipeware.HostString.operator !=(Pipeware.HostString left, Pipeware.HostString right) -> bool
+static Pipeware.HostString.operator ==(Pipeware.HostString left, Pipeware.HostString right) -> bool
+static Pipeware.PathString.FromUriComponent(string! uriComponent) -> Pipeware.PathString
+static Pipeware.PathString.FromUriComponent(System.Uri! uri) -> Pipeware.PathString
+static Pipeware.PathString.implicit operator Pipeware.PathString(string? s) -> Pipeware.PathString
+static Pipeware.PathString.implicit operator string!(Pipeware.PathString path) -> string!
+static Pipeware.PathString.operator !=(Pipeware.PathString left, Pipeware.PathString right) -> bool
+static Pipeware.PathString.operator +(Pipeware.PathString left, Pipeware.PathString right) -> Pipeware.PathString
+static Pipeware.PathString.operator +(Pipeware.PathString left, Pipeware.QueryString right) -> string!
+static Pipeware.PathString.operator +(Pipeware.PathString left, string? right) -> string!
+static Pipeware.PathString.operator +(string! left, Pipeware.PathString right) -> string!
+static Pipeware.PathString.operator ==(Pipeware.PathString left, Pipeware.PathString right) -> bool
+static Pipeware.QueryString.Create(string! name, string! value) -> Pipeware.QueryString
+static Pipeware.QueryString.Create(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, Microsoft.Extensions.Primitives.StringValues>>! parameters) -> Pipeware.QueryString
+static Pipeware.QueryString.Create(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, string?>>! parameters) -> Pipeware.QueryString
+static Pipeware.QueryString.FromUriComponent(string! uriComponent) -> Pipeware.QueryString
+static Pipeware.QueryString.FromUriComponent(System.Uri! uri) -> Pipeware.QueryString
+static Pipeware.QueryString.operator !=(Pipeware.QueryString left, Pipeware.QueryString right) -> bool
+static Pipeware.QueryString.operator +(Pipeware.QueryString left, Pipeware.QueryString right) -> Pipeware.QueryString
+static Pipeware.QueryString.operator ==(Pipeware.QueryString left, Pipeware.QueryString right) -> bool
+static Pipeware.RequestContextFeatureExtensions.GetQueryFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IQueryFeature!
+static Pipeware.RequestContextFeatureExtensions.GetRequestLifetimeFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IRequestLifetimeFeature!
+static Pipeware.RequestContextFeatureExtensions.GetRequestPathFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IRequestPathFeature!
+static Pipeware.RequestContextFeatureExtensions.GetResultFailureFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IResultFailureFeature!
+static Pipeware.RequestContextFeatureExtensions.GetResultObjectFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IResultObjectFeature!
+static Pipeware.RequestContextFeatureExtensions.GetRouteValuesFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IRouteValuesFeature!
+static Pipeware.RequestDelegateFactory<TRequestContext>.Create(System.Delegate! handler, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options = null, Pipeware.RequestDelegateMetadataResult? metadataResult = null) -> Pipeware.RequestDelegateResult<TRequestContext!>!
+static Pipeware.RequestDelegateFactory<TRequestContext>.Create(System.Delegate! handler, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options) -> Pipeware.RequestDelegateResult<TRequestContext!>!
+static Pipeware.RequestDelegateFactory<TRequestContext>.Create(System.Reflection.MethodInfo! methodInfo, System.Func<TRequestContext!, object!>? targetFactory = null, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options = null, Pipeware.RequestDelegateMetadataResult? metadataResult = null) -> Pipeware.RequestDelegateResult<TRequestContext!>!
+static Pipeware.RequestDelegateFactory<TRequestContext>.Create(System.Reflection.MethodInfo! methodInfo, System.Func<TRequestContext!, object!>? targetFactory, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options) -> Pipeware.RequestDelegateResult<TRequestContext!>!
+static Pipeware.RequestDelegateFactory<TRequestContext>.InferMetadata(System.Reflection.MethodInfo! methodInfo, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options = null) -> Pipeware.RequestDelegateMetadataResult!
+static Pipeware.Results.EmptyResult<TRequestContext>.Instance.get -> Pipeware.Results.EmptyResult<TRequestContext!>!
+static Pipeware.Routing.LinkGeneratorEndpointNameAddressExtensions.GetPathByName<TRequestContext>(this Pipeware.Routing.LinkGenerator<TRequestContext!>! generator, string! endpointName, object? values, Pipeware.PathString pathBase = default(Pipeware.PathString), Pipeware.FragmentString fragment = default(Pipeware.FragmentString), Pipeware.Routing.LinkOptions? options = null) -> string?
+static Pipeware.Routing.LinkGeneratorEndpointNameAddressExtensions.GetPathByName<TRequestContext>(this Pipeware.Routing.LinkGenerator<TRequestContext!>! generator, string! endpointName, Pipeware.Routing.RouteValueDictionary? values = null, Pipeware.PathString pathBase = default(Pipeware.PathString), Pipeware.FragmentString fragment = default(Pipeware.FragmentString), Pipeware.Routing.LinkOptions? options = null) -> string?
+static Pipeware.Routing.LinkGeneratorEndpointNameAddressExtensions.GetPathByName<TRequestContext>(this Pipeware.Routing.LinkGenerator<TRequestContext!>! generator, TRequestContext! requestContext, string! endpointName, object? values, Pipeware.PathString? pathBase = null, Pipeware.FragmentString fragment = default(Pipeware.FragmentString), Pipeware.Routing.LinkOptions? options = null) -> string?
+static Pipeware.Routing.LinkGeneratorEndpointNameAddressExtensions.GetPathByName<TRequestContext>(this Pipeware.Routing.LinkGenerator<TRequestContext!>! generator, TRequestContext! requestContext, string! endpointName, Pipeware.Routing.RouteValueDictionary? values = null, Pipeware.PathString? pathBase = null, Pipeware.FragmentString fragment = default(Pipeware.FragmentString), Pipeware.Routing.LinkOptions? options = null) -> string?
+static Pipeware.Routing.MatcherPolicy<TRequestContext>.ContainsDynamicEndpoints(System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>! endpoints) -> bool
+static Pipeware.Routing.Patterns.RoutePatternFactory.Combine(Pipeware.Routing.Patterns.RoutePattern? left, Pipeware.Routing.Patterns.RoutePattern! right) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Constraint(object! constraint) -> Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Constraint(Pipeware.Routing.IRouteConstraint! constraint) -> Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Constraint(string! constraint) -> Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!
+static Pipeware.Routing.Patterns.RoutePatternFactory.LiteralPart(string! content) -> Pipeware.Routing.Patterns.RoutePatternLiteralPart!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPart(string! parameterName) -> Pipeware.Routing.Patterns.RoutePatternParameterPart!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPart(string! parameterName, object! default) -> Pipeware.Routing.Patterns.RoutePatternParameterPart!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPart(string! parameterName, object? default, Pipeware.Routing.Patterns.RoutePatternParameterKind parameterKind) -> Pipeware.Routing.Patterns.RoutePatternParameterPart!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPart(string! parameterName, object? default, Pipeware.Routing.Patterns.RoutePatternParameterKind parameterKind, params Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference![]! parameterPolicies) -> Pipeware.Routing.Patterns.RoutePatternParameterPart!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPart(string! parameterName, object? default, Pipeware.Routing.Patterns.RoutePatternParameterKind parameterKind, System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!>! parameterPolicies) -> Pipeware.Routing.Patterns.RoutePatternParameterPart!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPolicy(Pipeware.Routing.IParameterPolicy! parameterPolicy) -> Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!
+static Pipeware.Routing.Patterns.RoutePatternFactory.ParameterPolicy(string! parameterPolicy) -> Pipeware.Routing.Patterns.RoutePatternParameterPolicyReference!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Parse(string! pattern) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Parse(string! pattern, object? defaults, object? parameterPolicies) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Parse(string! pattern, object? defaults, object? parameterPolicies, object? requiredValues) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Parse(string! pattern, Pipeware.Routing.RouteValueDictionary? defaults, Pipeware.Routing.RouteValueDictionary? parameterPolicies) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Parse(string! pattern, Pipeware.Routing.RouteValueDictionary? defaults, Pipeware.Routing.RouteValueDictionary? parameterPolicies, Pipeware.Routing.RouteValueDictionary? requiredValues) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(object? defaults, object? parameterPolicies, params Pipeware.Routing.Patterns.RoutePatternPathSegment![]! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(object? defaults, object? parameterPolicies, System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPathSegment!>! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(params Pipeware.Routing.Patterns.RoutePatternPathSegment![]! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(Pipeware.Routing.RouteValueDictionary? defaults, Pipeware.Routing.RouteValueDictionary? parameterPolicies, params Pipeware.Routing.Patterns.RoutePatternPathSegment![]! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(Pipeware.Routing.RouteValueDictionary? defaults, Pipeware.Routing.RouteValueDictionary? parameterPolicies, System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPathSegment!>! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(string! rawText, params Pipeware.Routing.Patterns.RoutePatternPathSegment![]! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(string? rawText, object? defaults, object? parameterPolicies, params Pipeware.Routing.Patterns.RoutePatternPathSegment![]! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(string? rawText, object? defaults, object? parameterPolicies, System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPathSegment!>! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(string? rawText, Pipeware.Routing.RouteValueDictionary? defaults, Pipeware.Routing.RouteValueDictionary? parameterPolicies, params Pipeware.Routing.Patterns.RoutePatternPathSegment![]! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(string? rawText, Pipeware.Routing.RouteValueDictionary? defaults, Pipeware.Routing.RouteValueDictionary? parameterPolicies, System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPathSegment!>! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(string? rawText, System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPathSegment!>! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Pattern(System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPathSegment!>! segments) -> Pipeware.Routing.Patterns.RoutePattern!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Segment(params Pipeware.Routing.Patterns.RoutePatternPart![]! parts) -> Pipeware.Routing.Patterns.RoutePatternPathSegment!
+static Pipeware.Routing.Patterns.RoutePatternFactory.Segment(System.Collections.Generic.IEnumerable<Pipeware.Routing.Patterns.RoutePatternPart!>! parts) -> Pipeware.Routing.Patterns.RoutePatternPathSegment!
+static Pipeware.Routing.Patterns.RoutePatternFactory.SeparatorPart(string! content) -> Pipeware.Routing.Patterns.RoutePatternSeparatorPart!
+static Pipeware.Routing.RouteConstraintMatcher.Match(System.Collections.Generic.IDictionary<string!, Pipeware.Routing.IRouteConstraint!>! constraints, Pipeware.Routing.RouteValueDictionary! routeValues, Pipeware.IRequestContext! requestContext, Pipeware.Routing.IRouter! route, Pipeware.Routing.RouteDirection routeDirection, Microsoft.Extensions.Logging.ILogger! logger) -> bool
+static Pipeware.Routing.RouteValueDictionary.FromArray(System.Collections.Generic.KeyValuePair<string!, object?>[]! items) -> Pipeware.Routing.RouteValueDictionary!
+static Pipeware.Routing.RoutingServiceCollectionExtensions.AddRouting<TRequestContext>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Pipeware.Routing.RoutingServiceCollectionExtensions.AddRouting<TRequestContext>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Pipeware.Routing.RouteOptions<TRequestContext!>!>! configureOptions) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Pipeware.Routing.RoutingServiceCollectionExtensions.AddRoutingCore<TRequestContext>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Pipeware.Routing.Template.RoutePrecedence.ComputeInbound(Pipeware.Routing.Template.RouteTemplate! template) -> decimal
+static Pipeware.Routing.Template.RoutePrecedence.ComputeOutbound(Pipeware.Routing.Template.RouteTemplate! template) -> decimal
+static Pipeware.Routing.Template.TemplateBinder.RoutePartsEqual(object? a, object? b) -> bool
+static Pipeware.Routing.Template.TemplatePart.CreateLiteral(string! text) -> Pipeware.Routing.Template.TemplatePart!
+static Pipeware.Routing.Template.TemplatePart.CreateParameter(string! name, bool isCatchAll, bool isOptional, object? defaultValue, System.Collections.Generic.IEnumerable<Pipeware.Routing.Template.InlineConstraint!>? inlineConstraints) -> Pipeware.Routing.Template.TemplatePart!
+static readonly Pipeware.EndpointMetadataCollection.Empty -> Pipeware.EndpointMetadataCollection!
+static readonly Pipeware.FragmentString.Empty -> Pipeware.FragmentString
+static readonly Pipeware.PathString.Empty -> Pipeware.PathString
+static readonly Pipeware.QueryCollection.Empty -> Pipeware.QueryCollection!
+static readonly Pipeware.QueryString.Empty -> Pipeware.QueryString
+static readonly Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata, TRequestContext>.Default -> Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata!, TRequestContext!>!
+static readonly Pipeware.Routing.Patterns.RoutePattern.RequiredValueAny -> object!
+static readonly Pipeware.Routing.RouteValueEqualityComparer.Default -> Pipeware.Routing.RouteValueEqualityComparer!
+virtual Pipeware.Features.FeatureCollection.Revision.get -> int
+virtual Pipeware.Routing.DefaultInlineConstraintResolver<TRequestContext>.ResolveConstraint(string! inlineConstraint) -> Pipeware.Routing.IRouteConstraint?
+virtual Pipeware.Routing.EndpointDataSource<TRequestContext>.GetGroupedEndpoints(Pipeware.Routing.RouteGroupContext<TRequestContext!>! context) -> System.Collections.Generic.IReadOnlyList<Pipeware.Endpoint<TRequestContext!>!>!
+virtual Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata, TRequestContext>.CompareMetadata(TMetadata? x, TMetadata? y) -> int
+virtual Pipeware.Routing.Matching.EndpointMetadataComparer<TMetadata, TRequestContext>.GetMetadata(Pipeware.Endpoint<TRequestContext!>! endpoint) -> TMetadata?
+virtual Pipeware.Routing.Patterns.RoutePatternTransformer<TRequestContext>.SubstituteRequiredValues(Pipeware.Routing.Patterns.RoutePattern! original, Pipeware.Routing.RouteValueDictionary! requiredValues) -> Pipeware.Routing.Patterns.RoutePattern?
+~Pipeware.Routing.Tree.InboundMatch.Entry.get -> Pipeware.Routing.Tree.InboundRouteEntry
+~Pipeware.Routing.Tree.InboundMatch.Entry.set -> void
+~Pipeware.Routing.Tree.InboundMatch.TemplateMatcher.get -> Pipeware.Routing.Template.TemplateMatcher
+~Pipeware.Routing.Tree.InboundMatch.TemplateMatcher.set -> void
+~Pipeware.Routing.Tree.InboundRouteEntry.Constraints.get -> System.Collections.Generic.IDictionary<string, Pipeware.Routing.IRouteConstraint>
+~Pipeware.Routing.Tree.InboundRouteEntry.Constraints.set -> void
+~Pipeware.Routing.Tree.InboundRouteEntry.Defaults.get -> Pipeware.Routing.RouteValueDictionary
+~Pipeware.Routing.Tree.InboundRouteEntry.Defaults.set -> void
+~Pipeware.Routing.Tree.InboundRouteEntry.Handler.get -> Pipeware.Routing.IRouter
+~Pipeware.Routing.Tree.InboundRouteEntry.Handler.set -> void
+~Pipeware.Routing.Tree.InboundRouteEntry.RouteName.get -> string
+~Pipeware.Routing.Tree.InboundRouteEntry.RouteName.set -> void
+~Pipeware.Routing.Tree.InboundRouteEntry.RouteTemplate.get -> Pipeware.Routing.Template.RouteTemplate
+~Pipeware.Routing.Tree.InboundRouteEntry.RouteTemplate.set -> void
+~Pipeware.Routing.Tree.OutboundMatch.Entry.get -> Pipeware.Routing.Tree.OutboundRouteEntry
+~Pipeware.Routing.Tree.OutboundMatch.Entry.set -> void
+~Pipeware.Routing.Tree.OutboundMatch.TemplateBinder.get -> Pipeware.Routing.Template.TemplateBinder
+~Pipeware.Routing.Tree.OutboundMatch.TemplateBinder.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.Constraints.get -> System.Collections.Generic.IDictionary<string, Pipeware.Routing.IRouteConstraint>
+~Pipeware.Routing.Tree.OutboundRouteEntry.Constraints.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.Data.get -> object
+~Pipeware.Routing.Tree.OutboundRouteEntry.Data.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.Defaults.get -> Pipeware.Routing.RouteValueDictionary
+~Pipeware.Routing.Tree.OutboundRouteEntry.Defaults.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.Handler.get -> Pipeware.Routing.IRouter
+~Pipeware.Routing.Tree.OutboundRouteEntry.Handler.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.RequiredLinkValues.get -> Pipeware.Routing.RouteValueDictionary
+~Pipeware.Routing.Tree.OutboundRouteEntry.RequiredLinkValues.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.RouteName.get -> string
+~Pipeware.Routing.Tree.OutboundRouteEntry.RouteName.set -> void
+~Pipeware.Routing.Tree.OutboundRouteEntry.RouteTemplate.get -> Pipeware.Routing.Template.RouteTemplate
+~Pipeware.Routing.Tree.OutboundRouteEntry.RouteTemplate.set -> void
+~Pipeware.Routing.Tree.TreeRouteBuilder.Build() -> Pipeware.Routing.Tree.TreeRouter
+~Pipeware.Routing.Tree.TreeRouteBuilder.Build(int version) -> Pipeware.Routing.Tree.TreeRouter
+~Pipeware.Routing.Tree.TreeRouteBuilder.InboundEntries.get -> System.Collections.Generic.IList<Pipeware.Routing.Tree.InboundRouteEntry>
+~Pipeware.Routing.Tree.TreeRouteBuilder.MapInbound(Pipeware.Routing.IRouter handler, Pipeware.Routing.Template.RouteTemplate routeTemplate, string routeName, int order) -> Pipeware.Routing.Tree.InboundRouteEntry
+~Pipeware.Routing.Tree.TreeRouteBuilder.MapOutbound(Pipeware.Routing.IRouter handler, Pipeware.Routing.Template.RouteTemplate routeTemplate, Pipeware.Routing.RouteValueDictionary requiredLinkValues, string routeName, int order) -> Pipeware.Routing.Tree.OutboundRouteEntry
+~Pipeware.Routing.Tree.TreeRouteBuilder.OutboundEntries.get -> System.Collections.Generic.IList<Pipeware.Routing.Tree.OutboundRouteEntry>
+~Pipeware.Routing.Tree.TreeRouter.GetVirtualPath(Pipeware.Routing.VirtualPathContext context) -> Pipeware.Routing.VirtualPathData
+~Pipeware.Routing.Tree.TreeRouter.RouteAsync(Pipeware.Routing.RouteContext context) -> System.Threading.Tasks.Task
+~Pipeware.Routing.Tree.UrlMatchingNode.CatchAlls.get -> Pipeware.Routing.Tree.UrlMatchingNode
+~Pipeware.Routing.Tree.UrlMatchingNode.CatchAlls.set -> void
+~Pipeware.Routing.Tree.UrlMatchingNode.ConstrainedCatchAlls.get -> Pipeware.Routing.Tree.UrlMatchingNode
+~Pipeware.Routing.Tree.UrlMatchingNode.ConstrainedCatchAlls.set -> void
+~Pipeware.Routing.Tree.UrlMatchingNode.ConstrainedParameters.get -> Pipeware.Routing.Tree.UrlMatchingNode
+~Pipeware.Routing.Tree.UrlMatchingNode.ConstrainedParameters.set -> void
+~Pipeware.Routing.Tree.UrlMatchingNode.Literals.get -> System.Collections.Generic.Dictionary<string, Pipeware.Routing.Tree.UrlMatchingNode>
+~Pipeware.Routing.Tree.UrlMatchingNode.Matches.get -> System.Collections.Generic.List<Pipeware.Routing.Tree.InboundMatch>
+~Pipeware.Routing.Tree.UrlMatchingNode.Parameters.get -> Pipeware.Routing.Tree.UrlMatchingNode
+~Pipeware.Routing.Tree.UrlMatchingNode.Parameters.set -> void
+~static readonly Pipeware.Routing.Tree.TreeRouter.RouteGroupKey -> string

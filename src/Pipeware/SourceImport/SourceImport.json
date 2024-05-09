@@ -1,0 +1,1526 @@
+{
+  "namespaces": {
+    "Microsoft.AspNetCore.Http.Features": "Pipeware.Features",
+    "Microsoft.AspNetCore.Builder": "Pipeware.Builder",
+    "Microsoft.AspNetCore.Http": "Pipeware",
+    "Microsoft.AspNetCore.Routing": "Pipeware.Routing",
+    "Microsoft.Extensions.Internal": "Pipeware.Internal",
+    "Microsoft.AspNetCore.Internal": "Pipeware.Internal",
+    "Microsoft.AspNetCore.Routing.Patterns": "Pipeware.Routing.Patterns",
+    "Microsoft.AspNetCore.Routing.Template": "Pipeware.Routing.Template",
+    "Microsoft.AspNetCore.Routing.Constraints": "Pipeware.Routing.Constraints",
+    "Microsoft.AspNetCore.Routing.Matching": "Pipeware.Routing.Matching",
+    "Microsoft.AspNetCore.Http.Metadata": "Pipeware.Metadata",
+    "Microsoft.AspNetCore.Routing.Tree": "Pipeware.Routing.Tree",
+    "Microsoft.AspNetCore.Routing.Internal": "Pipeware.Routing.Internal",
+    "Microsoft.AspNetCore.Routing.DecisionTree": "Pipeware.Routing.DecisionTree",
+    "Microsoft.AspNetCore.Shared": "Pipeware.Internal",
+    "Microsoft.AspNetCore.Http.Extensions": "Pipeware.Extensions",
+    "Microsoft.AspNetCore.Http.HttpResults": "Pipeware.Results",
+    "Microsoft.AspNetCore.Mvc": "Pipeware",
+    "Microsoft.AspNetCore.Builder.Extensions": "Pipeware.Builder.Extensions",
+    "Microsoft.AspNetCore.Mvc.ModelBinding": "Pipeware"
+  },
+  "files": [
+    "src/Extensions/Features/src/FeatureCollection.cs",
+    "src/Extensions/Features/src/FeatureReferences.cs",
+    "src/Extensions/Features/src/IFeatureCollection.cs",
+    "src/Http/Http.Abstractions/src/AsParametersAttribute.cs",
+    "src/Http/Http.Abstractions/src/DefaultEndpointFilterInvocationContext.cs",
+    "src/Http/Http.Abstractions/src/EndpointFilterDelegate.cs",
+    "src/Http/Http.Abstractions/src/EndpointFilterFactoryContext.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/EndpointFilterInvocationContext.cs",
+      "rewriters": [
+        {
+          "kind": "makeTypeGeneric",
+          "type": "EndpointFilterInvocationContext",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arities": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Http.Abstractions/src/EndpointFilterInvocationContextOfT.Generated.cs",
+      "rewriters": [
+        {
+          "kind": "makeTypeGeneric",
+          "type": "EndpointFilterInvocationContext",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arities": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      ]
+    },
+    "src/Http/Http.Abstractions/src/Extensions/EndpointBuilder.cs",
+    "src/Http/Http.Abstractions/src/Extensions/IEndpointConventionBuilder.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/MapExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makeMethodGeneric",
+          "method": "Map",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    "src/Http/Http.Abstractions/src/Extensions/MapMiddleware.cs",
+    "src/Http/Http.Abstractions/src/Extensions/MapOptions.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/MapWhenExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "removeUsing",
+          "usingAlias": "Predicate"
+        },
+        {
+          "kind": "renameType",
+          "Predicate": "Func<TRequestContext, bool>"
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "method": "MapWhen",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    "src/Http/Http.Abstractions/src/Extensions/MapWhenMiddleware.cs",
+    "src/Http/Http.Abstractions/src/Extensions/MapWhenOptions.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/RunExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makeMethodGeneric",
+          "method": "Run",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/UseMiddlewareExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makeMethodGeneric",
+          "method": "UseMiddleware",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "removeMethod",
+          "method": "UseMiddleware",
+          "parameterCount": 2
+        },
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "types": [
+            "ReflectionMiddlewareBinder",
+            "InterfaceMiddlewareBinder"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "CompileExpression",
+            "ReflectionFallback"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arity": 1
+        },
+        {
+          "kind": "addUsing",
+          "using": "Microsoft.Extensions.DependencyInjection"
+        }
+      ]
+    },
+    "src/Http/Http.Abstractions/src/FragmentString.cs",
+    "src/Http/Http.Abstractions/src/HostString.cs",
+    "src/Http/Http.Abstractions/src/HttpResults/EmptyHttpResult.cs",
+    "src/Http/Http.Abstractions/src/HttpResults/IResult.cs",
+    "src/Http/Http.Abstractions/src/IApplicationBuilder.cs",
+    "src/Http/Http.Abstractions/src/IBindableFromHttpContextOfT.cs",
+    "src/Http/Http.Abstractions/src/IEndpointFilter.cs",
+    "src/Http/Http.Abstractions/src/IMiddleware.cs",
+    "src/Http/Http.Abstractions/src/IMiddlewareFactory.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IEndpointMetadataProvider.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IEndpointParameterMetadataProvider.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IFromBodyMetadata.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IFromQueryMetadata.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IFromRouteMetadata.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IFromServiceMetadata.cs",
+    "src/Http/Http.Abstractions/src/Metadata/IRouteDiagnosticsMetadata.cs",
+    "src/Http/Http.Abstractions/src/PathString.cs",
+    "src/Http/Http.Abstractions/src/QueryString.cs",
+    "src/Http/Http.Abstractions/src/RequestDelegateResult.cs",
+    "src/Http/Http.Abstractions/src/Routing/Endpoint.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/Routing/EndpointHttpContextExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "GetEndpoint",
+            "SetEndpoint"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "type": "EndpointFeature",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    "src/Http/Http.Abstractions/src/Routing/EndpointMetadataCollection.cs",
+    "src/Http/Http.Abstractions/src/Routing/IEndpointFeature.cs",
+    "src/Http/Http.Abstractions/src/Routing/IRouteValuesFeature.cs",
+    "src/Http/Http.Abstractions/src/Routing/RouteValueDictionary.cs",
+    {
+      "path": "src/Http/Http.Extensions/src/RequestDelegateFactory.cs",
+      "rewriters": [
+        {
+          "kind": "renameType",
+          "HttpRequest": "IRequestFeature",
+          "BadHttpRequestException": "BadRequestException"
+        },
+        {
+          "kind": "removeMethod",
+          "keep": true,
+          "methods": [
+            "Create",
+            "InferMetadata",
+            "CreateFactoryContext",
+            "CreateTargetableRequestDelegate",
+            "CreateRequestDelegateResult",
+            "AsReadOnlyList",
+            "CreateArgumentsAndInferMetadata",
+            "CreateFilterPipeline",
+            "CreateParamCheckingResponseWritingMethodCall",
+            "AddResponseWritingToMethodCall",
+            "GetMemberInfo",
+            "GetMethodInfo",
+            "CreateMethodCall",
+            "CreateArguments",
+            "MapHandlerReturnTypeToValueTask",
+            "GetUnsupportedReturnTypeException",
+            "BuildErrorMessageForMultipleBodyParameters",
+            "BindParameterFromProperty",
+            "BindParameterFromValue",
+            "BindParameterFromExpression",
+            "IsOptionalParameter",
+            "GetValueFromProperty",
+            "GetExpressionType",
+            "FormatTrackedParameters",
+            "ExecuteTaskOfObject",
+            "ExecuteValueTaskOfObject",
+            "ExecuteValueTask",
+            "ExecuteTaskResult",
+            "ExecuteValueTaskResult",
+            "ExecuteTaskWithEmptyResult",
+            "ExecuteValueTaskWithEmptyResult",
+            "ExecuteResultWriteResponse",
+            "WrapObjectAsValueTask",
+            "TaskOfTToValueTaskOfObject",
+            "ValueTaskOfTToValueTaskOfObject",
+            "EnsureRequestResultNotNull",
+            "EnsureRequestTaskOfNotNull",
+            "EnsureRequestTaskNotNull",
+            "BindParameterFromService",
+            "BindParameterFromKeyedService",
+            "BindParameterFromProperties",
+            "BindParameterFromBindAsync",
+            "BindParameterFromRouteValueOrQueryString",
+            "CreateValueType"
+          ],
+          "type": "RequestDelegateFactory"
+        },
+        {
+          "kind": "removeMethod",
+          "keep": true,
+          "methods": [
+            "ParameterBindingFailed",
+            "RequiredParameterNotProvided",
+            "ImplicitBodyNotProvided",
+            "GetLogger"
+          ],
+          "type": "Log"
+        },
+        {
+          "kind": "removeField",
+          "fields": [
+            "FormFilesExpr",
+            "StatusCodeExpr",
+            "RequestStreamExpr",
+            "RequestPipeReaderExpr",
+            "FormExpr",
+            "HeadersExpr",
+            "QueryExpr",
+            "UserExpr",
+            "HttpContextExpr",
+            "HeaderIndexerProperty",
+            "FormFilesIndexerProperty",
+            "FormIndexerProperty",
+            "LogFormMappingFailedMethod",
+            "RequestServicesExpr",
+            "HttpRequestExpr",
+            "HttpResponseExpr",
+            "RequestAbortedExpr",
+            "RouteValuesExpr",
+            "FilterContextHttpContextExpr",
+            "FilterContextHttpContextStatusCodeExpr",
+            "FilterContextHttpContextResponseExpr",
+            "FormDataReaderConstructor",
+            "ProcessFormMethod",
+            "FormDataMapperMapMethod",
+            "DefaultAcceptsAndProducesContentType",
+            "FormFileContentType",
+            "FormContentType",
+            "PlaintextContentType",
+            "JsonResultWriteResponseOfTFastAsyncMethod",
+            "JsonResultWriteResponseOfTAsyncMethod",
+            "ExecuteTaskOfTFastMethod",
+            "ExecuteValueTaskOfTFastMethod",
+            "FilterContextExpr",
+            "FilterContextArgumentsExpr",
+            "InvokedFilterContextExpr",
+            "ExecuteTaskOfStringMethod",
+            "ExecuteValueTaskOfStringMethod",
+            "StringResultWriteResponseAsyncMethod"
+          ]
+        },
+        {
+          "kind": "removeStatement",
+          "ifs": [
+            "factoryContext.JsonRequestBodyParameter is not null && factoryContext.FirstFormRequestBodyParameter is not null",
+            "jsonTypeInfo.HasKnownPolymorphism()",
+            "factoryContext.ReadForm",
+            "factoryContext.HasInferredBody && factoryContext.DisableInferredFromBody",
+            "typeArg == typeof(string)",
+            "returnType == typeof(string)"
+          ],
+          "expressions": [
+            "UpdateFormBindingArgumentExpressions(factoryContext)"
+          ],
+          "variableDeclarations": [
+            "jsonSerializerOptions",
+            "formDataMapperOptions",
+            "jsonTypeInfo"
+          ]
+        },
+        {
+          "kind": "removeProperty",
+          "properties": [
+            "JsonSerializerOptions",
+            "FormDataMapperOptions",
+            "DisableInferredFromBody"
+          ],
+          "optional": true
+        },
+        {
+          "kind": "replaceExpression",
+          "Expression.GreaterThanOrEqual(FilterContextHttpContextStatusCodeExpr, Expression.Constant(400))": "Expression.IsTrue(FilterContextRequestContextIsFailureExpr)",
+          "FilterContextHttpContextExpr": "FilterContextRequestContextExpr",
+          "Expression.Assign(StatusCodeExpr, Expression.Constant(400))": "Expression.Assign(IsFailureExpr, Expression.Constant(true))",
+          "JsonResultWriteResponseOfTAsyncMethod": "ObjectResultWriteResponseOfTAsyncMethod",
+          "ParameterBindingMethodCache.SharedExpressions": "ParameterBindingMethodCache<TRequestContext>.SharedExpressions",
+          "HttpResponseExpr": "HttpContextExpr"
+        },
+        {
+          "kind": "removeExpression",
+          "expressions": [
+            "Expression.Constant(factoryContext.JsonSerializerOptions.GetReadOnlyTypeInfo(typeof(object)), typeof(JsonTypeInfo<object>))",
+            "jsonTypeInfo",
+            "Expression.Constant(typeof(JsonTypeInfo<>).MakeGenericType(typeArg))",
+            "Expression.Constant(typeof(JsonTypeInfo<>).MakeGenericType(returnType))"
+          ]
+        },
+        {
+          "kind": "removeParameter",
+          "parameters": [
+            "jsonTypeInfo"
+          ]
+        },
+        {
+          "kind": "removeUsing",
+          "using": "System.IO.Pipelines"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Http.Extensions/src/RequestDelegateFactoryContext.cs",
+      "rewriters": [
+        {
+          "kind": "removeProperty",
+          "properties": [
+            "JsonSerializerOptions",
+            "FormDataMapperOptions",
+            "DisableInferredFromBody"
+          ]
+        },
+        {
+          "kind": "renameProperty",
+          "JsonRequestBodyParameter": "RequestBodyParameter"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Http.Extensions/src/RequestDelegateFactoryOptions.cs",
+      "rewriters": [
+        {
+          "kind": "removeProperty",
+          "property": "DisableInferBodyFromParameters"
+        }
+      ]
+    },
+    "src/Http/Http.Extensions/src/RequestDelegateMetadataResult.cs",
+    {
+      "path": "src/Http/Http.Extensions/src/UriHelper.cs",
+      "rewriters": [
+        {
+          "kind": "removeMethod",
+          "methods": [
+            "GetDisplayUrl",
+            "GetEncodedUrl",
+            "GetEncodedPathAndQuery"
+          ]
+        }
+      ]
+    },
+    "src/Http/Http.Features/src/IHttpRequestLifetimeFeature.cs",
+    "src/Http/Http.Features/src/IQueryCollection.cs",
+    "src/Http/Http.Features/src/IQueryFeature.cs",
+    "src/Http/Http/src/Features/QueryFeature.cs",
+    "src/Http/Http/src/MiddlewareFactory.cs",
+    "src/Http/Http/src/QueryCollection.cs",
+    "src/Http/Http/src/QueryCollectionInternal.cs",
+    "src/Http/Routing.Abstractions/src/IOutboundParameterTransformer.cs",
+    "src/Http/Routing.Abstractions/src/IParameterPolicy.cs",
+    "src/Http/Routing.Abstractions/src/IRouteConstraint.cs",
+    "src/Http/Routing.Abstractions/src/IRouter.cs",
+    {
+      "path": "src/Http/Routing.Abstractions/src/LinkGenerator.cs",
+      "rewriters": [
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "method": "GetUriByAddress"
+        }
+      ]
+    },
+    "src/Http/Routing.Abstractions/src/LinkOptions.cs",
+    {
+      "path": "src/Http/Routing.Abstractions/src/RouteContext.cs",
+      "rewriters": [
+        {
+          "kind": "addUsing",
+          "using": "System.Diagnostics.CodeAnalysis"
+        },
+        {
+          "kind": "makeNullable",
+          "parameter": "httpContext"
+        },
+        {
+          "kind": "addAttribute",
+          "attribute": "MemberNotNull(nameof(_routeData))",
+          "setter": "RouteData"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing.Abstractions/src/RouteData.cs",
+      "rewriters": [
+        {
+          "kind": "removeAttribute",
+          "attribute": "DebuggerTypeProxy",
+          "type": "RouteData"
+        }
+      ]
+    },
+    "src/Http/Routing.Abstractions/src/RouteDirection.cs",
+    "src/Http/Routing.Abstractions/src/VirtualPathContext.cs",
+    {
+      "path": "src/Http/Routing.Abstractions/src/VirtualPathData.cs",
+      "rewriters": [
+        {
+          "kind": "addUsing",
+          "using": "System.Diagnostics.CodeAnalysis"
+        },
+        {
+          "kind": "makeNullable",
+          "field": "_dataTokens",
+          "parameter": "dataTokens"
+        },
+        {
+          "kind": "addAttribute",
+          "attribute": "MemberNotNull(nameof(_virtualPath))",
+          "setter": "VirtualPath"
+        }
+      ]
+    },
+    "src/Http/Routing/src/ArrayBuilder.cs",
+    {
+      "path": "src/Http/Routing/src/Builder/EndpointFilterExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "method": "AddEndpointFilter",
+          "parameters": [
+            {
+              "parameter": "builder",
+              "types": [
+                "RouteHandlerBuilder",
+                "RouteGroupBuilder"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "removeMethod",
+          "method": "AddEndpointFilter",
+          "parameterCount": 1
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "AddEndpointFilterFactory",
+            "AddEndpointFilter"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arity": 1
+        },
+        {
+          "kind": "removeGenericParameter",
+          "TBuilder": "IEndpointConventionBuilder<TRequestContext>"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/Builder/EndpointFilterExtensions.cs",
+      "alias": "crtp",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "renameFile",
+          "fileName": "EndpointFilterExtensions.crtp.cs"
+        },
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "method": "AddEndpointFilter",
+          "parameters": [
+            {
+              "parameter": "builder",
+              "types": [
+                "RouteHandlerBuilder",
+                "RouteGroupBuilder"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "removeMethod",
+          "method": "AddEndpointFilter",
+          "parameterCount": 1
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "AddEndpointFilterFactory",
+            "AddEndpointFilter"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arity": 1
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "type": "IEndpointConventionBuilder",
+          "parameters": [
+            "TRequestContext",
+            "TBuilder"
+          ]
+        },
+        {
+          "kind": "replaceParameter",
+          "this TBuilder builder": "this IEndpointConventionBuilder<TRequestContext, TBuilder> builder"
+        },
+        {
+          "kind": "replaceStatement",
+          "return builder;": "return (TBuilder)builder;"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/Builder/EndpointRouteBuilderExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "MapGroup",
+            "MapFallback",
+            "Map",
+            "GetOrAddRouteEndpointDataSource"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "removeMethod",
+          "keep": true,
+          "methods": [
+            "MapGroup",
+            "MapFallback",
+            "Map",
+            "GetOrAddRouteEndpointDataSource"
+          ],
+          "type": "EndpointRouteBuilderExtensions"
+        },
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "method": "Map",
+          "parameters": [
+            {
+              "parameter": "pattern",
+              "type": "RoutePattern"
+            }
+          ]
+        },
+        {
+          "kind": "removeField",
+          "fields": [
+            "MapEndpointUnreferencedCodeWarning",
+            "MapEndpointDynamicCodeWarning"
+          ],
+          "keep": true
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/Builder/EndpointRoutingApplicationBuilderExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "UseRouting",
+            "UseEndpoints",
+            "VerifyRoutingServicesAreRegistered",
+            "VerifyEndpointRoutingMiddlewareIsRegistered"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "replaceExpression",
+          "(object)UseRouting": "(object)UseRouting<TRequestContext>",
+          "builder.UseMiddleware<EndpointRoutingMiddleware>(endpointRouteBuilder)": "builder.UseMiddleware(typeof(EndpointRoutingMiddleware), endpointRouteBuilder)",
+          "builder.UseMiddleware<EndpointMiddleware>()": "builder.UseMiddleware(typeof(EndpointMiddleware))"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/Builder/RouteHandlerBuilder.cs",
+      "rewriters": [
+        {
+          "kind": "addInterface",
+          "interface": "IEndpointConventionBuilder<TRequestContext, RouteHandlerBuilder<TRequestContext>>"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/Builder/RoutingEndpointConventionBuilderExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "removeGenericParameter",
+          "TBuilder": "IEndpointConventionBuilder<TRequestContext>"
+        },
+        {
+          "kind": "removeMethod",
+          "methods": [
+            "RequireHost",
+            "DisableAntiforgery",
+            "WithFormMappingOptions",
+            "WithFormOptions"
+          ]
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "WithName",
+            "WithDisplayName",
+            "WithMetadata",
+            "WithGroupName",
+            "WithOrder"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/Builder/RoutingEndpointConventionBuilderExtensions.cs",
+      "alias": "crtp",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "renameFile",
+          "fileName": "RoutingEndpointConventionBuilderExtensions.crtp.cs"
+        },
+        {
+          "kind": "removeMethod",
+          "methods": [
+            "RequireHost",
+            "DisableAntiforgery",
+            "WithFormMappingOptions",
+            "WithFormOptions"
+          ]
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "WithName",
+            "WithDisplayName",
+            "WithMetadata",
+            "WithGroupName",
+            "WithOrder"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arity": 1
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "type": "IEndpointConventionBuilder",
+          "parameters": [
+            "TRequestContext",
+            "TBuilder"
+          ]
+        },
+        {
+          "kind": "replaceParameter",
+          "this TBuilder builder": "this IEndpointConventionBuilder<TRequestContext, TBuilder> builder"
+        },
+        {
+          "kind": "replaceStatement",
+          "return builder;": "return (TBuilder)builder;"
+        }
+      ]
+    },
+    "src/Http/Routing/src/CompositeEndpointDataSource.cs",
+    "src/Http/Routing/src/ConfigureRouteHandlerOptions.cs",
+    {
+      "path": "src/Http/Routing/src/ConfigureRouteOptions.cs",
+      "namespace": "Pipeware.Routing"
+    },
+    "src/Http/Routing/src/Constraints/AlphaRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/BoolRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/CompositeRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/DateTimeRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/DecimalRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/DoubleRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/FileNameRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/FloatRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/GuidRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/IntRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/LengthRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/LongRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/MaxLengthRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/MaxRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/MinLengthRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/MinRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/NonFileNameRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/NullRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/OptionalRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/RangeRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/RegexErrorStubRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/RegexInlineRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/RegexRouteConstraint.cs",
+    "src/Http/Routing/src/Constraints/RequiredRouteConstraint.cs",
+    "src/Http/Routing/src/DataSourceDependentCache.cs",
+    "src/Http/Routing/src/DecisionTree/DecisionCriterion.cs",
+    "src/Http/Routing/src/DecisionTree/DecisionCriterionValue.cs",
+    "src/Http/Routing/src/DecisionTree/DecisionCriterionValueEqualityComparer.cs",
+    "src/Http/Routing/src/DecisionTree/DecisionTreeBuilder.cs",
+    "src/Http/Routing/src/DecisionTree/DecisionTreeNode.cs",
+    "src/Http/Routing/src/DecisionTree/IClassifier.cs",
+    "src/Http/Routing/src/DecisionTree/ItemDescriptor.cs",
+    "src/Http/Routing/src/DefaultEndpointRouteBuilder.cs",
+    {
+      "path": "src/Http/Routing/src/DefaultInlineConstraintResolver.cs",
+      "rewriters": [
+        {
+          "kind": "addInterface",
+          "interface": "IInlineConstraintResolver<TRequestContext>"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/DefaultLinkGenerator.cs",
+      "rewriters": [
+        {
+          "kind": "removeAttribute",
+          "attribute": "DebuggerTypeProxy",
+          "type": "DefaultLinkGenerator"
+        },
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "method": "GetUriByAddress"
+        }
+      ]
+    },
+    "src/Http/Routing/src/DefaultLinkParser.cs",
+    "src/Http/Routing/src/DefaultParameterPolicyFactory.cs",
+    {
+      "path": "src/Http/Routing/src/DependencyInjection/RoutingServiceCollectionExtensions.cs",
+      "namespace": "Pipeware.Routing",
+      "rewriters": [
+        {
+          "kind": "addUsing",
+          "using": "Microsoft.Extensions.DependencyInjection"
+        },
+        {
+          "kind": "removeStatement",
+          "expressions": [
+            "services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, HttpMethodMatcherPolicy>())",
+            "services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, HostMatcherPolicy>())",
+            "services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, AcceptsMatcherPolicy>())"
+          ]
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "AddRoutingCore",
+            "AddRouting"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "type": "IInlineConstraintResolver",
+          "parameters": [
+            "TRequestContext"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/EndpointDataSource.cs",
+      "rewriters": [
+        {
+          "kind": "removeStatement",
+          "if": "httpMethodMetadata is not null",
+          "variableDeclaration": "httpMethodMetadata"
+        }
+      ]
+    },
+    "src/Http/Routing/src/EndpointGroupNameAttribute.cs",
+    {
+      "path": "src/Http/Routing/src/EndpointMiddleware.cs",
+      "rewriters": [
+        {
+          "kind": "removeStatement",
+          "if": "!_routeOptions.SuppressCheckForUnhandledSecurityMetadata"
+        }
+      ]
+    },
+    "src/Http/Routing/src/EndpointNameAddressScheme.cs",
+    "src/Http/Routing/src/EndpointNameMetadata.cs",
+    {
+      "path": "src/Http/Routing/src/EndpointRoutingMiddleware.cs",
+      "rewriters": [
+        {
+          "kind": "removeStatement",
+          "ifs": [
+            "!_routeOptions.SuppressCheckForUnhandledSecurityMetadata",
+            "shortCircuitMetadata is not null"
+          ],
+          "expression": "SetMaxRequestBodySize(httpContext)",
+          "variableDeclaration": "shortCircuitMetadata"
+        },
+        {
+          "kind": "removeMethod",
+          "methods": [
+            "RequestSizeLimitMetadataNotFound",
+            "ThrowCannotShortCircuitAnAuthRouteException",
+            "ThrowCannotShortCircuitACorsRouteException",
+            "ThrowCannotShortCircuitAnAntiforgeryRouteException",
+            "SetMaxRequestBodySize",
+            "RequestSizeFeatureNotFound",
+            "RequestSizeFeatureIsReadOnly",
+            "MaxRequestBodySizeDisabled",
+            "MaxRequestBodySizeSet",
+            "ExecuteShortCircuit"
+          ]
+        }
+      ]
+    },
+    "src/Http/Routing/src/FallbackMetadata.cs",
+    "src/Http/Routing/src/IDynamicEndpointMetadata.cs",
+    "src/Http/Routing/src/IEndpointAddressScheme.cs",
+    "src/Http/Routing/src/IEndpointGroupNameMetadata.cs",
+    "src/Http/Routing/src/IEndpointNameMetadata.cs",
+    "src/Http/Routing/src/IEndpointRouteBuilder.cs",
+    "src/Http/Routing/src/IInlineConstraintResolver.cs",
+    "src/Http/Routing/src/Internal/DfaGraphWriter.cs",
+    "src/Http/Routing/src/IRouteNameMetadata.cs",
+    "src/Http/Routing/src/ISuppressLinkGenerationMetadata.cs",
+    "src/Http/Routing/src/ISuppressMatchingMetadata.cs",
+    {
+      "path": "src/Http/Routing/src/LinkGeneratorEndpointNameAddressExtensions.cs",
+      "rewriters": [
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "GetPathByName"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "methods": [
+            "GetUriByName"
+          ]
+        },
+        {
+          "kind": "addAttribute",
+          "attribute": "SuppressMessage(\"ApiDesign\", \"RS0026:Do not add multiple public overloads with optional parameters\", Justification = \"Required to maintain compatibility\")",
+          "method": "GetPathByName"
+        }
+      ]
+    },
+    "src/Http/Routing/src/LinkParser.cs",
+    "src/Http/Routing/src/Matching/AmbiguousMatchException.cs",
+    "src/Http/Routing/src/Matching/Candidate.cs",
+    "src/Http/Routing/src/Matching/CandidateSet.cs",
+    "src/Http/Routing/src/Matching/CandidateState.cs",
+    "src/Http/Routing/src/Matching/DataSourceDependentMatcher.cs",
+    "src/Http/Routing/src/Matching/DefaultEndpointSelector.cs",
+    "src/Http/Routing/src/Matching/DfaMatcher.cs",
+    "src/Http/Routing/src/Matching/DfaMatcherBuilder.cs",
+    "src/Http/Routing/src/Matching/DfaMatcherFactory.cs",
+    "src/Http/Routing/src/Matching/DfaNode.cs",
+    "src/Http/Routing/src/Matching/DfaState.cs",
+    "src/Http/Routing/src/Matching/DictionaryJumpTable.cs",
+    "src/Http/Routing/src/Matching/EndpointComparer.cs",
+    "src/Http/Routing/src/Matching/EndpointMetadataComparer.cs",
+    "src/Http/Routing/src/Matching/EndpointSelector.cs",
+    "src/Http/Routing/src/Matching/FastPathTokenizer.cs",
+    "src/Http/Routing/src/Matching/ICachableParameterPolicy.cs",
+    "src/Http/Routing/src/Matching/IEndpointComparerPolicy.cs",
+    "src/Http/Routing/src/Matching/IEndpointSelectorPolicy.cs",
+    "src/Http/Routing/src/Matching/ILEmitTrieFactory.cs",
+    "src/Http/Routing/src/Matching/ILEmitTrieJumpTable.cs",
+    "src/Http/Routing/src/Matching/INodeBuilderPolicy.cs",
+    "src/Http/Routing/src/Matching/IParameterLiteralNodeMatchingPolicy.cs",
+    "src/Http/Routing/src/Matching/JumpTable.cs",
+    "src/Http/Routing/src/Matching/JumpTableBuilder.cs",
+    "src/Http/Routing/src/Matching/LinearSearchJumpTable.cs",
+    "src/Http/Routing/src/Matching/Matcher.cs",
+    "src/Http/Routing/src/Matching/MatcherBuilder.cs",
+    "src/Http/Routing/src/Matching/MatcherFactory.cs",
+    "src/Http/Routing/src/Matching/MatcherPolicy.cs",
+    "src/Http/Routing/src/Matching/PathSegment.cs",
+    "src/Http/Routing/src/Matching/PolicyJumpTable.cs",
+    "src/Http/Routing/src/Matching/PolicyJumpTableEdge.cs",
+    "src/Http/Routing/src/Matching/PolicyNodeEdge.cs",
+    "src/Http/Routing/src/Matching/SingleEntryAsciiJumpTable.cs",
+    "src/Http/Routing/src/Matching/SingleEntryJumpTable.cs",
+    "src/Http/Routing/src/Matching/ZeroEntryJumpTable.cs",
+    "src/Http/Routing/src/NullRouter.cs",
+    "src/Http/Routing/src/ParameterPolicyActivator.cs",
+    "src/Http/Routing/src/ParameterPolicyFactory.cs",
+    "src/Http/Routing/src/PathTokenizer.cs",
+    "src/Http/Routing/src/Patterns/DefaultRoutePatternTransformer.cs",
+    "src/Http/Routing/src/Patterns/RouteParameterParser.cs",
+    "src/Http/Routing/src/Patterns/RoutePattern.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternException.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternFactory.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternLiteralPart.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternMatcher.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternParameterKind.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternParameterPart.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternParameterPolicyReference.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternParser.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternPart.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternPartKind.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternPathSegment.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternSeparatorPart.cs",
+    "src/Http/Routing/src/Patterns/RoutePatternTransformer.cs",
+    {
+      "path": "src/Http/Routing/src/RegexInlineRouteConstraintSetup.cs",
+      "namespace": "Pipeware.Routing"
+    },
+    "src/Http/Routing/src/RouteConstraintBuilder.cs",
+    "src/Http/Routing/src/RouteConstraintMatcher.cs",
+    "src/Http/Routing/src/RouteCreationException.cs",
+    "src/Http/Routing/src/RouteEndpoint.cs",
+    {
+      "path": "src/Http/Routing/src/RouteEndpointBuilder.cs",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "removeMethod",
+          "method": "CreateMetadataCollection"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/RouteEndpointDataSource.cs",
+      "rewriters": [
+        {
+          "kind": "removeProperty",
+          "properties": [
+            "HttpMethods",
+            "DisableInferBodyFromParameters"
+          ]
+        },
+        {
+          "kind": "removeStatement",
+          "if": "entry.HttpMethods is not null"
+        },
+        {
+          "kind": "removeMethod",
+          "method": "ShouldDisableInferredBodyParameters"
+        },
+        {
+          "kind": "addUsing",
+          "using": "Pipeware.Internal"
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Routing/src/RouteGroupBuilder.cs",
+      "rewriters": [
+        {
+          "kind": "addInterface",
+          "interface": "IEndpointConventionBuilder<TRequestContext, RouteGroupBuilder<TRequestContext>>",
+          "type": "RouteGroupBuilder"
+        },
+        {
+          "kind": "addInterface",
+          "interface": "IEndpointRouteBuilder<TRequestContext, RouteGroupBuilder<TRequestContext>>",
+          "type": "RouteGroupBuilder"
+        }
+      ]
+    },
+    "src/Http/Routing/src/RouteGroupContext.cs",
+    "src/Http/Routing/src/RouteHandlerOptions.cs",
+    "src/Http/Routing/src/RouteNameMetadata.cs",
+    "src/Http/Routing/src/RouteOptions.cs",
+    "src/Http/Routing/src/RouteValueEqualityComparer.cs",
+    "src/Http/Routing/src/RouteValuesAddress.cs",
+    "src/Http/Routing/src/RouteValuesAddressScheme.cs",
+    "src/Http/Routing/src/RoutingMarkerService.cs",
+    "src/Http/Routing/src/RoutingMetrics.cs",
+    "src/Http/Routing/src/SegmentState.cs",
+    "src/Http/Routing/src/Template/DefaultTemplateBinderFactory.cs",
+    "src/Http/Routing/src/Template/InlineConstraint.cs",
+    "src/Http/Routing/src/Template/RoutePrecedence.cs",
+    "src/Http/Routing/src/Template/RouteTemplate.cs",
+    "src/Http/Routing/src/Template/TemplateBinder.cs",
+    "src/Http/Routing/src/Template/TemplateBinderFactory.cs",
+    "src/Http/Routing/src/Template/TemplateMatcher.cs",
+    "src/Http/Routing/src/Template/TemplatePart.cs",
+    "src/Http/Routing/src/Template/TemplateSegment.cs",
+    "src/Http/Routing/src/Template/TemplateValuesResult.cs",
+    "src/Http/Routing/src/Tree/InboundMatch.cs",
+    "src/Http/Routing/src/Tree/InboundRouteEntry.cs",
+    "src/Http/Routing/src/Tree/LinkGenerationDecisionTree.cs",
+    "src/Http/Routing/src/Tree/OutboundMatch.cs",
+    "src/Http/Routing/src/Tree/OutboundMatchResult.cs",
+    "src/Http/Routing/src/Tree/OutboundRouteEntry.cs",
+    "src/Http/Routing/src/Tree/TreeEnumerator.cs",
+    "src/Http/Routing/src/Tree/TreeRouteBuilder.cs",
+    "src/Http/Routing/src/Tree/TreeRouter.cs",
+    "src/Http/Routing/src/Tree/UrlMatchingNode.cs",
+    "src/Http/Routing/src/Tree/UrlMatchingTree.cs",
+    "src/Http/Routing/src/UriBuilderContextPooledObjectPolicy.cs",
+    "src/Http/Routing/src/UriBuildingContext.cs",
+    "src/Mvc/Mvc.Abstractions/src/ModelBinding/EmptyBodyBehavior.cs",
+    "src/Mvc/Mvc.Core/src/FromBodyAttribute.cs",
+    "src/Mvc/Mvc.Core/src/FromQueryAttribute.cs",
+    "src/Mvc/Mvc.Core/src/FromRouteAttribute.cs",
+    "src/Mvc/Mvc.Core/src/FromServicesAttribute.cs",
+    "src/Shared/CopyOnWriteDictionary/CopyOnWriteDictionary.cs",
+    "src/Shared/Debugger/DebuggerHelpers.cs",
+    "src/Shared/Dictionary/AdaptiveCapacityDictionary.cs",
+    "src/Shared/EndpointMetadataPopulator.cs",
+    "src/Shared/ObjectMethodExecutor/AwaitableInfo.cs",
+    {
+      "path": "src/Shared/ParameterBindingMethodCache.cs",
+      "rewriters": [
+        {
+          "kind": "removeUsing",
+          "using": "Pipeware.ParameterBindingMethodCache.SharedExpressions"
+        },
+        {
+          "kind": "replaceExpression",
+          "TempSourceStringExpr": "SharedExpressions.TempSourceStringExpr",
+          "HttpContextExpr": "SharedExpressions.HttpContextExpr"
+        }
+      ]
+    },
+    "src/Shared/PropertyAsParameterInfo.cs",
+    {
+      "path": "src/Shared/PropertyHelper/PropertyHelper.cs",
+      "rewriters": [
+        {
+          "kind": "replaceExpression",
+          "typeof(Microsoft.Extensions.Internal.PropertyHelper.MetadataUpdateHandler)": "typeof(Pipeware.Internal.PropertyHelper.MetadataUpdateHandler)"
+        }
+      ]
+    },
+    "src/Shared/QueryStringEnumerable.cs",
+    {
+      "path": "src/Shared/RequestDelegateCreationMessages.cs",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "removeField",
+          "fields": [
+            "ParameterBindingFailedEventId",
+            "ParameterBindingFailedEventName",
+            "ParameterBindingFailedLogMessage",
+            "ParameterBindingFailedExceptionMessage",
+            "RequiredParameterNotProvidedEventId",
+            "RequiredParameterNotProvidedEventName",
+            "RequiredParameterNotProvidedLogMessage",
+            "RequiredParameterNotProvidedExceptionMessage",
+            "ImplicitBodyNotProvidedEventId",
+            "ImplicitBodyNotProvidedEventName",
+            "ImplicitBodyNotProvidedLogMessage",
+            "ImplicitBodyNotProvidedExceptionMessage"
+          ],
+          "keep": true
+        }
+      ]
+    },
+    {
+      "path": "src/Shared/RoslynUtils/TypeHelper.cs",
+      "namespace": "Pipeware.Internal",
+      "rewriters": [
+        {
+          "kind": "addUsing",
+          "using": "System.Runtime.CompilerServices"
+        }
+      ]
+    },
+    "src/Shared/RouteValueDictionaryTrimmerWarning.cs",
+    "src/Shared/TypeNameHelper/TypeNameHelper.cs",
+    "src/Shared/UrlDecoder/UrlDecoder.cs"
+  ],
+  "rules": [
+    {
+      "include": "**/*.cs",
+      "rewriters": [
+        {
+          "kind": "renameType",
+          "ArgumentOutOfRangeThrowHelper": "ArgumentOutOfRangeException",
+          "ArgumentNullThrowHelper": "ArgumentNullException",
+          "EndpointHttpContextExtensions": "EndpointRequestContextExtensions",
+          "HttpContext": "TRequestContext",
+          "IApplicationBuilder": "IPipelineBuilder",
+          "IBindableFromHttpContext": "IBindableFromRequestContext",
+          "EndpointRoutingApplicationBuilderExtensions": "EndpointRoutingPipelineBuilderExtensions",
+          "EmptyHttpResult": "EmptyResult",
+          "IHttpRequestLifetimeFeature": "IRequestLifetimeFeature",
+          "IHttpRequestFeature": "IRequestPathFeature"
+        },
+        {
+          "kind": "removeUsing",
+          "pattern": "Microsoft.AspNetCore.*"
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "types": [
+            "IBindableFromRequestContext",
+            "DataSourceDependentCache",
+            "IEndpointAddressScheme",
+            "EndpointMetadataComparer"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arity": 1
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "types": [
+            "Endpoint",
+            "IEndpointFeature",
+            "IPipelineBuilder",
+            "RequestDelegate",
+            "IMiddleware",
+            "IMiddlewareFactory",
+            "MiddlewareFactory",
+            "EndpointDataSource",
+            "EndpointFilterInvocationContext",
+            "DefaultEndpointFilterInvocationContext",
+            "EndpointBuilder",
+            "EndpointFilterDelegate",
+            "CompositeEndpointDataSource",
+            "RouteEndpoint",
+            "LinkGenerator",
+            "DefaultLinkGenerator",
+            "RouteEndpointBuilder",
+            "RouteOptions",
+            "ConfigureRouteOptions",
+            "RegexInlineRouteConstraintSetup",
+            "DefaultInlineConstraintResolver",
+            "ParameterPolicyFactory",
+            "DefaultParameterPolicyFactory",
+            "MatcherFactory",
+            "DfaMatcherFactory",
+            "DfaMatcherBuilder",
+            "DfaGraphWriter",
+            "DataSourceDependentMatcher",
+            "EndpointMetadataComparer",
+            "EndpointSelector",
+            "DefaultEndpointSelector",
+            "EndpointComparer",
+            "MatcherBuilder",
+            "MatcherPolicy",
+            "Candidate",
+            "RouteGroupContext",
+            "RouteGroupBuilder",
+            "DefaultRoutePatternTransformer",
+            "CandidateSet",
+            "CandidateState",
+            "Matcher",
+            "DfaMatcher",
+            "DefaultTemplateBinderFactory",
+            "RoutePatternTransformer",
+            "PolicyJumpTable",
+            "TemplateBinderFactory",
+            "DfaState",
+            "DfaNode",
+            "INodeBuilderPolicy",
+            "IEndpointComparerPolicy",
+            "IEndpointSelectorPolicy",
+            "PolicyNodeEdge",
+            "EndpointNameAddressScheme",
+            "DefaultLinkParser",
+            "RouteValuesAddressScheme",
+            "IEndpointRouteBuilder",
+            "RouteEndpointDataSource",
+            "IEndpointConventionBuilder",
+            "RouteHandlerBuilder",
+            "RequestDelegateFactoryOptions",
+            "RequestDelegateResult",
+            "EndpointMiddleware",
+            "EndpointRoutingMiddleware",
+            "DefaultEndpointRouteBuilder",
+            "ParameterBindingMethodCache",
+            "IResult",
+            "EmptyResult",
+            "RequestDelegateFactoryContext",
+            "RequestDelegateFactory",
+            "EndpointMetadataPopulator",
+            "IEndpointParameterMetadataProvider",
+            "IEndpointMetadataProvider",
+            "PropertyAsParameterInfo",
+            "IEndpointFilter",
+            "RoutingMarkerService",
+            "MapWhenMiddleware",
+            "MapWhenOptions",
+            "MapMiddleware",
+            "MapOptions"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "replaceExpression",
+          "optional": true,
+          "httpContext.Request.Path": "httpContext.GetRequestPathFeature().Path",
+          "httpContext.Request.PathBase": "httpContext.GetRequestPathFeature().PathBase",
+          "context.Request.Path": "context.GetRequestPathFeature().Path",
+          "context.Request.PathBase": "context.GetRequestPathFeature().PathBase",
+          "httpContext.Request.RouteValues": "httpContext.GetRouteValuesFeature().RouteValues",
+          "context.HttpContext.Request.Path": "context.HttpContext.GetRequestPathFeature().Path",
+          "context.HttpContext.Request.RouteValues": "context.HttpContext.GetRouteValuesFeature().RouteValues"
+        },
+        {
+          "kind": "removeParameter",
+          "parameter": "httpMethods"
+        },
+        {
+          "kind": "removeProperty",
+          "property": "HttpMethods",
+          "optional": true
+        },
+        {
+          "kind": "renameProperty",
+          "optional": true,
+          "HttpContext": "RequestContext",
+          "ServerFeatures": "PipelineFeatures"
+        },
+        {
+          "kind": "renameParameter",
+          "optional": true,
+          "httpContext": "requestContext"
+        }
+      ]
+    },
+    {
+      "includes": [
+        "**/*Constraint.cs",
+        "**/RouteContext.cs",
+        "**/VirtualPathContext.cs",
+        "**/RouteConstraintMatcher.cs",
+        "**/TemplateBinder.cs"
+      ],
+      "rewriters": [
+        {
+          "kind": "renameType",
+          "TRequestContext": "IRequestContext"
+        }
+      ]
+    },
+    {
+      "include": "**/EndpointRoutingMiddleware.cs",
+      "rewriters": [
+        {
+          "kind": "addAttribute",
+          "attribute": "DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)",
+          "typeParameter": "TRequestContext"
+        }
+      ]
+    },
+    {
+      "include": "**/From*Attribute.cs",
+      "rewriters": [
+        {
+          "kind": "removeInterface",
+          "interfaces": [
+            "IBindingSourceMetadata",
+            "IModelNameProvider",
+            "IConfigureEmptyBodyBehavior"
+          ],
+          "optional": true
+        },
+        {
+          "kind": "removeProperty",
+          "properties": [
+            "BindingSource"
+          ]
+        }
+      ]
+    }
+  ]
+}

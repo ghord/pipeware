@@ -91,16 +91,19 @@ interface IRequestContext
 - Move to using `Microsoft.CodeAnalysis.PublicApi` **(in preview2)**
 - Share the same `IServiceProvider` across multiple pipelines **(in preview2)**
 - Remove all mentions of httpContext from public API **(in preview2)**
-- Trimming annotated 
-- Decide on design that replaces convention extension methods
-- Link generation
-- 100% test coverage of handwritten code
+- Trimming annotated **(in preview3)**
+- Link generation **(in preview3)**
+- Update generic extension methods to use CRTP **(in preview3)**
+- Remove all mentions of http from comments on public methods
+- API review of new features
+- 100% test coverage of handwritten code 
 - `RequestDelegateFactory` parameter binding extensibility
 
 ### 1.1.0
 
 - `RequestDelegateGenerator` implemented
 - AOT compatible
+- Analyzers for routing
 - ...
 
 ### Future (consideration)

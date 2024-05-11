@@ -2,7 +2,7 @@
 
 # Pipeware
 
-**Pipeware** is a library that enables developers to host custom async request pipelines, using middleware, dependency injection, and routing
+**Pipeware** is a .Net library that enables developers to host custom AspNetCore style request pipelines using middlewares, dependency injection, and routing 
 
 ## Motivation
 

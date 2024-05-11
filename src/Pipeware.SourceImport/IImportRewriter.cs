@@ -37,6 +37,7 @@ namespace Pipeware.SourceImport
     [JsonDerivedType(typeof(RemoveGenericParameterRewriter), "removeGenericParameter")]
     [JsonDerivedType(typeof(RemoveInterfaceRewriter), "removeInterface")]
     [JsonDerivedType(typeof(ReplaceStatementRewriter), "replaceStatement")]
+    [JsonDerivedType(typeof(RemoveAsyncRewriter), "removeAsync")]
     [JsonPolymorphic(TypeDiscriminatorPropertyName = "kind")]
     public interface IImportRewriter
     {

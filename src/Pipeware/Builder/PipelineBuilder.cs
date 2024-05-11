@@ -17,7 +17,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Pipeware.Builder;
 
-public class PipelineBuilder<TRequestContext> : IPipelineBuilder<TRequestContext>, IEndpointRouteBuilder<TRequestContext> where TRequestContext : class, IRequestContext
+public class PipelineBuilder<TRequestContext> : IPipelineBuilder<TRequestContext, PipelineBuilder<TRequestContext>>, IEndpointRouteBuilder<TRequestContext, PipelineBuilder<TRequestContext>> where TRequestContext : class, IRequestContext
 {
     private const string PipelineFeaturesKey = "pipeline.Features";
     private const string ApplicationServicesKey = "application.Services";

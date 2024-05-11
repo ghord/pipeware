@@ -77,6 +77,15 @@ Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Branch.set -> void
 Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.MapWhenOptions() -> void
 Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Predicate.get -> System.Func<TRequestContext!, bool>?
 Pipeware.Builder.Extensions.MapWhenOptions<TRequestContext>.Predicate.set -> void
+Pipeware.Builder.Extensions.MapWhenSyncMiddleware<TRequestContext>
+Pipeware.Builder.Extensions.MapWhenSyncMiddleware<TRequestContext>.Invoke(TRequestContext! context) -> void
+Pipeware.Builder.Extensions.MapWhenSyncMiddleware<TRequestContext>.MapWhenSyncMiddleware(Pipeware.SyncRequestDelegate<TRequestContext!>! next, Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext!>! options) -> void
+Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext>
+Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext>.Branch.get -> Pipeware.SyncRequestDelegate<TRequestContext!>?
+Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext>.Branch.set -> void
+Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext>.MapWhenSyncOptions() -> void
+Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext>.Predicate.get -> System.Func<TRequestContext!, bool>?
+Pipeware.Builder.Extensions.MapWhenSyncOptions<TRequestContext>.Predicate.set -> void
 Pipeware.Builder.IEndpointConventionBuilder<TRequestContext, TSelf>
 Pipeware.Builder.IEndpointConventionBuilder<TRequestContext>
 Pipeware.Builder.IEndpointConventionBuilder<TRequestContext>.Add(System.Action<Pipeware.Builder.EndpointBuilder<TRequestContext!>!>! convention) -> void
@@ -90,6 +99,15 @@ Pipeware.Builder.IPipelineBuilder<TRequestContext>.New() -> Pipeware.Builder.IPi
 Pipeware.Builder.IPipelineBuilder<TRequestContext>.PipelineFeatures.get -> Pipeware.Features.IFeatureCollection!
 Pipeware.Builder.IPipelineBuilder<TRequestContext>.Properties.get -> System.Collections.Generic.IDictionary<string!, object?>!
 Pipeware.Builder.IPipelineBuilder<TRequestContext>.Use(System.Func<Pipeware.RequestDelegate<TRequestContext!>!, Pipeware.RequestDelegate<TRequestContext!>!>! middleware) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext, TSelf>
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.ApplicationServices.set -> void
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.Build() -> Pipeware.SyncRequestDelegate<TRequestContext!>!
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.New() -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.PipelineFeatures.get -> Pipeware.Features.IFeatureCollection!
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.Properties.get -> System.Collections.Generic.IDictionary<string!, object?>!
+Pipeware.Builder.ISyncPipelineBuilder<TRequestContext>.Use(System.Func<Pipeware.SyncRequestDelegate<TRequestContext!>!, Pipeware.SyncRequestDelegate<TRequestContext!>!>! middleware) -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
 Pipeware.Builder.MapExtensions
 Pipeware.Builder.MapWhenExtensions
 Pipeware.Builder.PipelineBuilder<TRequestContext>
@@ -111,6 +129,18 @@ Pipeware.Builder.RouteHandlerBuilder<TRequestContext>.Finally(System.Action<Pipe
 Pipeware.Builder.RouteHandlerBuilder<TRequestContext>.RouteHandlerBuilder(System.Collections.Generic.IEnumerable<Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!>! endpointConventionBuilders) -> void
 Pipeware.Builder.RoutingEndpointConventionBuilderExtensions
 Pipeware.Builder.RunExtensions
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.ApplicationServices.get -> System.IServiceProvider!
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.ApplicationServices.set -> void
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.Build() -> Pipeware.SyncRequestDelegate<TRequestContext!>!
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.DefaultDelegate.get -> Pipeware.SyncRequestDelegate<TRequestContext!>!
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.DefaultDelegate.set -> void
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.New() -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.PipelineFeatures.get -> Pipeware.Features.IFeatureCollection!
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.Properties.get -> System.Collections.Generic.IDictionary<string!, object?>!
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.SyncPipelineBuilder(System.IServiceProvider! serviceProvider) -> void
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.SyncPipelineBuilder(System.IServiceProvider! serviceProvider, Pipeware.Features.IFeatureCollection! pipelineFeatures) -> void
+Pipeware.Builder.SyncPipelineBuilder<TRequestContext>.Use(System.Func<Pipeware.SyncRequestDelegate<TRequestContext!>!, Pipeware.SyncRequestDelegate<TRequestContext!>!>! middleware) -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
 Pipeware.Builder.UseExtensions
 Pipeware.Builder.UseMiddlewareExtensions
 Pipeware.DefaultEndpointFilterInvocationContext<TRequestContext>
@@ -266,6 +296,11 @@ Pipeware.IRequestContext.Items.get -> System.Collections.Generic.IDictionary<str
 Pipeware.IRequestContext.RequestServices.get -> System.IServiceProvider!
 Pipeware.IResult<TRequestContext>
 Pipeware.IResult<TRequestContext>.ExecuteAsync(TRequestContext! requestContext) -> System.Threading.Tasks.Task!
+Pipeware.ISyncMiddleware<TRequestContext>
+Pipeware.ISyncMiddleware<TRequestContext>.Invoke(TRequestContext! context, Pipeware.SyncRequestDelegate<TRequestContext!>! next) -> void
+Pipeware.ISyncMiddlewareFactory<TRequestContext>
+Pipeware.ISyncMiddlewareFactory<TRequestContext>.Create(System.Type! middlewareType) -> Pipeware.ISyncMiddleware<TRequestContext!>?
+Pipeware.ISyncMiddlewareFactory<TRequestContext>.Release(Pipeware.ISyncMiddleware<TRequestContext!>! middleware) -> void
 Pipeware.Metadata.IEndpointMetadataProvider<TRequestContext>
 Pipeware.Metadata.IEndpointMetadataProvider<TRequestContext>.PopulateMetadata(System.Reflection.MethodInfo! method, Pipeware.Builder.EndpointBuilder<TRequestContext!>! builder) -> void
 Pipeware.Metadata.IEndpointParameterMetadataProvider<TRequestContext>
@@ -788,6 +823,11 @@ Pipeware.Routing.VirtualPathData.VirtualPath.get -> string!
 Pipeware.Routing.VirtualPathData.VirtualPath.set -> void
 Pipeware.Routing.VirtualPathData.VirtualPathData(Pipeware.Routing.IRouter! router, string! virtualPath) -> void
 Pipeware.Routing.VirtualPathData.VirtualPathData(Pipeware.Routing.IRouter! router, string! virtualPath, Pipeware.Routing.RouteValueDictionary? dataTokens) -> void
+Pipeware.SyncMiddlewareFactory<TRequestContext>
+Pipeware.SyncMiddlewareFactory<TRequestContext>.Create(System.Type! middlewareType) -> Pipeware.ISyncMiddleware<TRequestContext!>?
+Pipeware.SyncMiddlewareFactory<TRequestContext>.Release(Pipeware.ISyncMiddleware<TRequestContext!>! middleware) -> void
+Pipeware.SyncMiddlewareFactory<TRequestContext>.SyncMiddlewareFactory(System.IServiceProvider! serviceProvider) -> void
+Pipeware.SyncRequestDelegate<TRequestContext>
 static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, Pipeware.Routing.Patterns.RoutePattern! pattern, Pipeware.RequestDelegate<TRequestContext!>! requestDelegate) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
 static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, Pipeware.Routing.Patterns.RoutePattern! pattern, System.Delegate! handler) -> Pipeware.Builder.RouteHandlerBuilder<TRequestContext!>!
 static Pipeware.Builder.EndpointRouteBuilderExtensions.Map<TRequestContext>(this Pipeware.Routing.IEndpointRouteBuilder<TRequestContext!>! endpoints, string! pattern, Pipeware.RequestDelegate<TRequestContext!>! requestDelegate) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
@@ -802,6 +842,7 @@ static Pipeware.Builder.MapExtensions.Map<TRequestContext>(this Pipeware.Builder
 static Pipeware.Builder.MapExtensions.Map<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, Pipeware.PathString pathMatch, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
 static Pipeware.Builder.MapExtensions.Map<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, string! pathMatch, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
 static Pipeware.Builder.MapWhenExtensions.MapWhen<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, System.Func<TRequestContext!, bool>! predicate, System.Action<Pipeware.Builder.IPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.MapWhenExtensions.MapWhen<TRequestContext>(this Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>! app, System.Func<TRequestContext!, bool>! predicate, System.Action<Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!>! configuration) -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
 static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, string! displayName) -> TBuilder
 static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Func<Pipeware.Builder.EndpointBuilder<TRequestContext!>!, string!>! func) -> TBuilder
 static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithDisplayName<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, string! displayName) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
@@ -815,8 +856,11 @@ static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithName<TReq
 static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithOrder<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, int order) -> TBuilder
 static Pipeware.Builder.RoutingEndpointConventionBuilderExtensions.WithOrder<TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>! builder, int order) -> Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!>!
 static Pipeware.Builder.RunExtensions.Run<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, Pipeware.RequestDelegate<TRequestContext!>! handler) -> void
+static Pipeware.Builder.RunExtensions.Run<TRequestContext>(this Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>! app, Pipeware.SyncRequestDelegate<TRequestContext!>! handler) -> void
 static Pipeware.Builder.UseExtensions.Use<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, System.Func<TRequestContext!, Pipeware.RequestDelegate<TRequestContext!>!, System.Threading.Tasks.Task!>! middleware) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.UseExtensions.Use<TRequestContext>(this Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>! app, System.Action<TRequestContext!, Pipeware.SyncRequestDelegate<TRequestContext!>!>! middleware) -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
 static Pipeware.Builder.UseMiddlewareExtensions.UseMiddleware<TRequestContext>(this Pipeware.Builder.IPipelineBuilder<TRequestContext!>! app, System.Type! middleware, params object?[]! args) -> Pipeware.Builder.IPipelineBuilder<TRequestContext!>!
+static Pipeware.Builder.UseMiddlewareExtensions.UseMiddleware<TRequestContext>(this Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>! app, System.Type! middleware, params object?[]! args) -> Pipeware.Builder.ISyncPipelineBuilder<TRequestContext!>!
 static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, Pipeware.IEndpointFilter<TRequestContext!>! filter) -> TBuilder
 static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Func<Pipeware.EndpointFilterInvocationContext<TRequestContext!>!, Pipeware.EndpointFilterDelegate<TRequestContext!>!, System.Threading.Tasks.ValueTask<object?>>! routeHandlerFilter) -> TBuilder
 static Pipeware.EndpointFilterExtensions.AddEndpointFilter<TBuilder, TRequestContext>(this Pipeware.Builder.IEndpointConventionBuilder<TRequestContext!, TBuilder>! builder, System.Type! filterType) -> TBuilder

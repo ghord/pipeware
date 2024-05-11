@@ -122,6 +122,44 @@
           "usingAlias": "Predicate"
         },
         {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "renameType",
+          "Predicate": "Func<TRequestContext, bool>"
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "method": "MapWhen",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/MapWhenExtensions.cs",
+      "alias": "sync",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "renameFile",
+          "fileName": "MapWhenExtensions.sync.cs"
+        },
+        {
+          "kind": "removeUsing",
+          "usingAlias": "Predicate"
+        },
+        {
           "kind": "renameType",
           "Predicate": "Func<TRequestContext, bool>"
         },
@@ -142,10 +180,53 @@
       ]
     },
     "src/Http/Http.Abstractions/src/Extensions/MapWhenMiddleware.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/MapWhenMiddleware.cs",
+      "alias": "sync",
+      "rewriters": [
+        {
+          "kind": "removeAsync"
+        }
+      ]
+    },
     "src/Http/Http.Abstractions/src/Extensions/MapWhenOptions.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/MapWhenOptions.cs",
+      "alias": "sync"
+    },
     {
       "path": "src/Http/Http.Abstractions/src/Extensions/RunExtensions.cs",
       "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "method": "Run",
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/RunExtensions.cs",
+      "alias": "sync",
+      "rewriters": [
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "renameFile",
+          "fileName": "RunExtensions.sync.cs"
+        },
         {
           "kind": "makeMethodGeneric",
           "method": "Run",
@@ -166,6 +247,9 @@
       "path": "src/Http/Http.Abstractions/src/Extensions/UseMiddlewareExtensions.cs",
       "rewriters": [
         {
+          "kind": "makePartial"
+        },
+        {
           "kind": "makeMethodGeneric",
           "method": "UseMiddleware",
           "parameters": [
@@ -183,9 +267,6 @@
           "kind": "removeMethod",
           "method": "UseMiddleware",
           "parameterCount": 2
-        },
-        {
-          "kind": "makePartial"
         },
         {
           "kind": "makeTypeGeneric",
@@ -228,15 +309,109 @@
         }
       ]
     },
+    {
+      "path": "src/Http/Http.Abstractions/src/Extensions/UseMiddlewareExtensions.cs",
+      "alias": "sync",
+      "rewriters": [
+        {
+          "kind": "renameFile",
+          "fileName": "UseMiddlewareExtensions.sync.cs"
+        },
+        {
+          "kind": "removeMethod",
+          "multiple": true,
+          "methods": [
+            "UseMiddleware",
+            "GetService"
+          ]
+        },
+        {
+          "kind": "removeField",
+          "fields": [
+            "InvokeMethodName",
+            "InvokeAsyncMethodName",
+            "GetServiceInfo",
+            "MiddlewareAccessibility"
+          ]
+        },
+        {
+          "kind": "makePartial"
+        },
+        {
+          "kind": "removeAsync"
+        },
+        {
+          "kind": "makeTypeGeneric",
+          "types": [
+            "ReflectionMiddlewareBinder",
+            "InterfaceMiddlewareBinder"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ]
+        },
+        {
+          "kind": "makeMethodGeneric",
+          "methods": [
+            "CompileExpression",
+            "ReflectionFallback"
+          ],
+          "parameters": [
+            "TRequestContext"
+          ],
+          "constraints": [
+            {
+              "parameter": "TRequestContext",
+              "type": "IRequestContext",
+              "class": true
+            }
+          ],
+          "arity": 1
+        },
+        {
+          "kind": "replaceExpression",
+          "await middleware.InvokeAsync(context, next)": "middleware.Invoke(context, next)"
+        },
+        {
+          "kind": "replaceStatement",
+          "return (Task)methodInfo.Invoke(middleware, BindingFlags.DoNotWrapExceptions, binder: null, methodArguments, culture: null)!;": "methodInfo.Invoke(middleware, BindingFlags.DoNotWrapExceptions, binder: null, methodArguments, culture: null);",
+          "return factory(instance, context, serviceProvider);": "factory(instance, context, serviceProvider);"
+        },
+        {
+          "kind": "addUsing",
+          "using": "Microsoft.Extensions.DependencyInjection"
+        },
+        {
+          "kind": "renameMethod",
+          "ReflectionFallback": "SyncReflectionFallback",
+          "CompileExpression": "CompileSyncExpression"
+        }
+      ]
+    },
     "src/Http/Http.Abstractions/src/FragmentString.cs",
     "src/Http/Http.Abstractions/src/HostString.cs",
     "src/Http/Http.Abstractions/src/HttpResults/EmptyHttpResult.cs",
     "src/Http/Http.Abstractions/src/HttpResults/IResult.cs",
     "src/Http/Http.Abstractions/src/IApplicationBuilder.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/IApplicationBuilder.cs",
+      "alias": "sync"
+    },
     "src/Http/Http.Abstractions/src/IBindableFromHttpContextOfT.cs",
     "src/Http/Http.Abstractions/src/IEndpointFilter.cs",
     "src/Http/Http.Abstractions/src/IMiddleware.cs",
     "src/Http/Http.Abstractions/src/IMiddlewareFactory.cs",
+    {
+      "path": "src/Http/Http.Abstractions/src/IMiddlewareFactory.cs",
+      "alias": "sync"
+    },
     "src/Http/Http.Abstractions/src/Metadata/IEndpointMetadataProvider.cs",
     "src/Http/Http.Abstractions/src/Metadata/IEndpointParameterMetadataProvider.cs",
     "src/Http/Http.Abstractions/src/Metadata/IFromBodyMetadata.cs",
@@ -504,6 +679,10 @@
     "src/Http/Http.Features/src/IQueryFeature.cs",
     "src/Http/Http/src/Features/QueryFeature.cs",
     "src/Http/Http/src/MiddlewareFactory.cs",
+    {
+      "path": "src/Http/Http/src/MiddlewareFactory.cs",
+      "alias": "sync"
+    },
     "src/Http/Http/src/QueryCollection.cs",
     "src/Http/Http/src/QueryCollectionInternal.cs",
     "src/Http/Routing.Abstractions/src/IOutboundParameterTransformer.cs",
@@ -1519,6 +1698,24 @@
           "properties": [
             "BindingSource"
           ]
+        }
+      ]
+    },
+    {
+      "include": "**/*.cs",
+      "alias": "sync",
+      "rewriters": [
+        {
+          "kind": "renameType",
+          "IPipelineBuilder": "ISyncPipelineBuilder",
+          "IMiddleware": "ISyncMiddleware",
+          "IMiddlewareFactory": "ISyncMiddlewareFactory",
+          "RequestDelegate": "SyncRequestDelegate",
+          "ReflectionMiddlewareBinder": "ReflectionSyncMiddlewareBinder",
+          "InterfaceMiddlewareBinder": "InterfaceSyncMiddlewareBinder",
+          "MapWhenOptions": "MapWhenSyncOptions",
+          "MapWhenMiddleware": "MapWhenSyncMiddleware",
+          "MiddlewareFactory": "SyncMiddlewareFactory"
         }
       ]
     }

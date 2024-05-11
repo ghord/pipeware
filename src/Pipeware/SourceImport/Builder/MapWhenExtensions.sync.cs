@@ -2,6 +2,7 @@
 // This file is derivative work of aspnetcore project and is licensed under the terms of the MIT license.
 
 // Source file: https://github.com/dotnet/aspnetcore/tree/release/8.0/src/Http/Http.Abstractions/src/Extensions/MapWhenExtensions.cs
+// Source alias: sync
 // Source Sha256: 2fea33752ce791aa9049df84396aa15e9b160965
 
 // Originally licensed under:
@@ -17,7 +18,7 @@ namespace Pipeware.Builder;
 
 
 /// <summary>
-/// Extension methods for the <see cref="MapWhenMiddleware{TRequestContext}"/>.
+/// Extension methods for the <see cref="MapWhenSyncMiddleware{TRequestContext}"/>.
 /// </summary>
 public static partial class MapWhenExtensions
 {
@@ -28,7 +29,7 @@ public static partial class MapWhenExtensions
     /// <param name="predicate">Invoked with the request environment to determine if the branch should be taken</param>
     /// <param name="configuration">Configures a branch to take</param>
     /// <returns></returns>
-    public static IPipelineBuilder<TRequestContext> MapWhen<TRequestContext>(this IPipelineBuilder<TRequestContext> app, Func<TRequestContext, bool> predicate, Action<IPipelineBuilder<TRequestContext>> configuration) where TRequestContext : class, IRequestContext
+    public static ISyncPipelineBuilder<TRequestContext> MapWhen<TRequestContext>(this ISyncPipelineBuilder<TRequestContext> app, Func<TRequestContext, bool> predicate, Action<ISyncPipelineBuilder<TRequestContext>> configuration) where TRequestContext : class, IRequestContext
     {
         ArgumentNullException.ThrowIfNull(app);
         ArgumentNullException.ThrowIfNull(predicate);
@@ -40,11 +41,11 @@ public static partial class MapWhenExtensions
         var branch = branchBuilder.Build();
 
         // put middleware in pipeline
-        var options = new MapWhenOptions<TRequestContext>
+        var options = new MapWhenSyncOptions<TRequestContext>
         {
             Predicate = predicate,
             Branch = branch,
         };
-        return app.Use(next => new MapWhenMiddleware<TRequestContext>(next, options).Invoke);
+        return app.Use(next => new MapWhenSyncMiddleware<TRequestContext>(next, options).Invoke);
     }
 }

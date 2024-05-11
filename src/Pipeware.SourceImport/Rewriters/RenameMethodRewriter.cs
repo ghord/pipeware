@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -13,8 +14,8 @@ namespace Pipeware.SourceImport.Rewriters
 {
     public class RenameMethodRewriter : IImportRewriter
     {
-        public required string SourceName { get; set; }
-        public required string TargetName { get; set; }
+        [JsonExtensionData]
+        public Dictionary<string, JsonElement> Renames { get; set; } = new Dictionary<string, JsonElement>();
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
 
@@ -22,13 +23,33 @@ namespace Pipeware.SourceImport.Rewriters
 
         public SyntaxTree Rewrite(RewriterContext context, SyntaxTree tree)
         {
-            var rewriter = new RenameMethodCSharpRewriter(SourceName, TargetName, Multiple, context.Logger);
-
-            var root = rewriter.Visit(tree.GetRoot());
-
-            if(!rewriter.Renamed)
+            if(Renames is null || Renames.Count == 0)
             {
-                context.Logger.LogWarning($"Method {SourceName} was not renamed");
+                context.Logger.LogError("No methods to rename");
+
+                return tree;
+            }
+
+            var root = tree.GetRoot();
+
+            foreach(var (source, targetJson) in Renames)
+            {
+                if(targetJson.ValueKind != JsonValueKind.String)
+                {
+                    context.Logger.LogError("Invalid target name for method {method}", source);
+                    continue;
+                }
+
+                var target = targetJson.GetString()!;
+
+                var rewriter = new RenameMethodCSharpRewriter(source, target, Multiple, context.Logger);
+
+                root = rewriter.Visit(root);
+
+                if(!rewriter.Renamed)
+                {
+                    context.Logger.LogWarning($"Method {source} was not renamed");
+                }
             }
 
             return tree.WithRootAndOptions(root, tree.Options);
@@ -69,6 +90,24 @@ namespace Pipeware.SourceImport.Rewriters
 
 
                 return base.VisitMethodDeclaration(node);
+            }
+
+            public override SyntaxNode? VisitInvocationExpression(InvocationExpressionSyntax node)
+            {
+                if (node.Expression is IdentifierNameSyntax identifierName && identifierName.Identifier.ToString().Equals(_source))
+                {
+                    _logger.LogDebug("Renamed method usage [teal]{methodName}[/] to [green]{target}[/]", identifierName.Identifier, _target);
+
+                    return Visit(node.WithExpression(identifierName.WithIdentifier(SyntaxFactory.Identifier(_target).WithTriviaFrom(identifierName.Identifier))));
+                }
+                else if (node.Expression is GenericNameSyntax genericName && genericName.Identifier.ToString().Equals(_source))
+                {
+                    _logger.LogDebug("Renamed method usage [teal]{methodName}[/] to [green]{target}[/]", genericName.Identifier, _target);
+
+                    return Visit(node.WithExpression(genericName.WithIdentifier(SyntaxFactory.Identifier(_target).WithTriviaFrom(genericName.Identifier))));
+                }
+
+                return base.VisitInvocationExpression(node);
             }
         }
     }

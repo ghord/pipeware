@@ -28,4 +28,16 @@ public static class UseExtensions
     {
         return app.Use(next => context => middleware(context, next));
     }
+
+    /// <summary>
+    /// Adds a middleware delegate defined in-line to the application's request pipeline.
+    /// If you aren't calling the next function, use <see cref="RunExtensions.Run(IApplicationBuilder, RequestDelegate)"/> instead.
+    /// </summary>
+    /// <param name="app">The <see cref="ISyncPipelineBuilder{TRequestContext}"/> instance.</param>
+    /// <param name="middleware">A function that handles the request and calls the given next function.</param>
+    /// <returns>The <see cref="ISyncPipelineBuilder{TRequestContext}"/> instance.</returns>
+    public static ISyncPipelineBuilder<TRequestContext> Use<TRequestContext>(this ISyncPipelineBuilder<TRequestContext> app, Action<TRequestContext, SyncRequestDelegate<TRequestContext>> middleware) where TRequestContext : class, IRequestContext
+    {
+        return app.Use(next => context => middleware(context, next));
+    }
 }

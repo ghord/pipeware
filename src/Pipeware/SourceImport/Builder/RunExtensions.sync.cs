@@ -2,6 +2,7 @@
 // This file is derivative work of aspnetcore project and is licensed under the terms of the MIT license.
 
 // Source file: https://github.com/dotnet/aspnetcore/tree/release/8.0/src/Http/Http.Abstractions/src/Extensions/RunExtensions.cs
+// Source alias: sync
 // Source Sha256: d0fb02958ddb0e85778d9bd0cdaf835a06368611
 
 // Originally licensed under:
@@ -21,9 +22,9 @@ public static partial class RunExtensions
     /// <summary>
     /// Adds a terminal middleware delegate to the application's request pipeline.
     /// </summary>
-    /// <param name="app">The <see cref="IPipelineBuilder{TRequestContext}"/> instance.</param>
+    /// <param name="app">The <see cref="ISyncPipelineBuilder{TRequestContext}"/> instance.</param>
     /// <param name="handler">A delegate that handles the request.</param>
-    public static void Run<TRequestContext>(this IPipelineBuilder<TRequestContext> app, RequestDelegate<TRequestContext> handler) where TRequestContext : class, IRequestContext
+    public static void Run<TRequestContext>(this ISyncPipelineBuilder<TRequestContext> app, SyncRequestDelegate<TRequestContext> handler) where TRequestContext : class, IRequestContext
     {
         ArgumentNullException.ThrowIfNull(app);
         ArgumentNullException.ThrowIfNull(handler);

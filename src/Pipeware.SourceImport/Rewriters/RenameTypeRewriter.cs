@@ -168,25 +168,33 @@ namespace Pipeware.SourceImport.Rewriters
                 {
                     _logger.LogDebug("Replaced cref [teal]{type}[/] with type [green]{target}[/]", node.Name, _targetName);
 
-                    return node.WithName(SyntaxFactory.ParseTypeName(_targetName));
+                    return Visit(node.WithName(SyntaxFactory.ParseTypeName(_targetName)));
                 }
                 else if (node.Name is GenericNameSyntax genericType && genericType.Identifier.ToString().Equals(_sourceName))
                 {
                     _logger.LogDebug("Replaced cref [teal]{type}[/] with type [green]{target}[/]", genericType, _targetName);
 
-                    return node.WithName(genericType.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericType.Identifier)));
+                    return Visit(node.WithName(genericType.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericType.Identifier))));
                 }
 
                 return base.VisitNameMemberCref(node);
             }
+            
 
             public override SyntaxNode? VisitCastExpression(CastExpressionSyntax node)
             {
-                if (node.Type.ToString().Equals(_sourceName))
+                if (node.Type is IdentifierNameSyntax identifierName && identifierName.Identifier.ToString().Equals(_sourceName))
                 {
                     _logger.LogDebug("Replaced cast [teal]{type}[/] with type [green]{target}[/]", node.Type, _targetName);
 
                     return Visit(node.WithType(SyntaxFactory.ParseTypeName(_targetName).WithTriviaFrom(node.Type)));
+                }
+
+                else if(node.Type is GenericNameSyntax genericName && genericName.Identifier.ToString().Equals(_sourceName))
+                {
+                    _logger.LogDebug("Replaced cast [teal]{type}[/] with type [green]{target}[/]", node.Type, _targetName);
+
+                    return Visit(node.WithType(genericName.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericName.Identifier))));
                 }
 
                 return base.VisitCastExpression(node);
@@ -282,11 +290,17 @@ namespace Pipeware.SourceImport.Rewriters
 
             public override SyntaxNode? VisitObjectCreationExpression(ObjectCreationExpressionSyntax node)
             {
-                if (node.Type.ToString().Equals(_sourceName))
+                if (node.Type is IdentifierNameSyntax identifierName && identifierName.Identifier.ToString().Equals(_sourceName))
                 {
                     _logger.LogDebug("Replaced constructor expression [teal]{type}[/] with type [green]{target}[/]", node.Type, _targetName);
 
-                    return Visit(node.WithType(SyntaxFactory.ParseTypeName(_targetName).WithTriviaFrom(node.Type)));
+                    return Visit(node.WithType(identifierName.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(identifierName.Identifier))));
+                }
+                else if(node.Type is GenericNameSyntax genericName && genericName.Identifier.ToString().Equals(_sourceName))
+                {
+                    _logger.LogDebug("Replaced constructor expression [teal]{type}[/] with type [green]{target}[/]", node.Type, _targetName);
+
+                    return Visit(node.WithType(genericName.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericName.Identifier))));
                 }
 
                 return base.VisitObjectCreationExpression(node);
@@ -374,13 +388,13 @@ namespace Pipeware.SourceImport.Rewriters
                 {
                     _logger.LogDebug("Replaced type constraint [teal]{constraint}[/] with type [green]{target}[/]", node.Type, _targetName);
 
-                    return node.WithType(identifierName.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(identifierName.Identifier)));
+                    return Visit(node.WithType(identifierName.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(identifierName.Identifier))));
                 }
                 else if (node.Type is GenericNameSyntax genericType && genericType.Identifier.ToString().Equals(_sourceName))
                 {
                     _logger.LogDebug("Replaced generic type constraint [teal]{constraint}[/] with type [green]{target}[/]", node.Type, _targetName);
 
-                    return node.WithType(genericType.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericType.Identifier)));
+                    return Visit(node.WithType(genericType.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericType.Identifier))));
                 }
 
                 return base.VisitTypeConstraint(node);
@@ -392,7 +406,7 @@ namespace Pipeware.SourceImport.Rewriters
                 {
                     _logger.LogDebug("Replaced type parameter [teal]{param}[/] with type [green]{target}[/]", node, _targetName);
 
-                    return node.WithIdentifier(SyntaxFactory.Identifier(_targetName));
+                    return Visit(node.WithIdentifier(SyntaxFactory.Identifier(_targetName)));
                 }
 
                 return base.VisitTypeParameter(node);
@@ -400,11 +414,18 @@ namespace Pipeware.SourceImport.Rewriters
 
             public override SyntaxNode? VisitFieldDeclaration(FieldDeclarationSyntax node)
             {
-                if (node.Declaration.Type.ToString().Equals(_sourceName))
+                if (node.Declaration.Type is IdentifierNameSyntax identifierName && identifierName.Identifier.ToString().Equals(_sourceName))
                 {
                     _logger.LogDebug("Replaced field [teal]{field}[/] with type [green]{target}[/]", node, _targetName);
 
                     return Visit(node.WithDeclaration(node.Declaration.WithType(SyntaxFactory.ParseTypeName(_targetName).WithTriviaFrom(node.Declaration.Type))));
+                }
+
+                else if(node.Declaration.Type is GenericNameSyntax genericName && genericName.Identifier.ToString().Equals(_sourceName))
+                {
+                    _logger.LogDebug("Replaced field [teal]{field}[/] with generic type [green]{target}[/]", node, _targetName);
+
+                    return Visit(node.WithDeclaration(node.Declaration.WithType(genericName.WithIdentifier(SyntaxFactory.Identifier(_targetName).WithTriviaFrom(genericName.Identifier)))));
                 }
 
                 return base.VisitFieldDeclaration(node);
@@ -512,13 +533,13 @@ namespace Pipeware.SourceImport.Rewriters
                             {
                                 _logger.LogDebug("Replaced [teal]{node}[/] expression with [green]nameof({target})[/]", node, _targetName);
 
-                                return node.WithArgumentList(
+                                return Visit(node.WithArgumentList(
                                     node.ArgumentList.WithArguments(
                                         node.ArgumentList.Arguments.Replace(
                                             node.ArgumentList.Arguments[0],
                                             node.ArgumentList.Arguments[0].WithExpression(
                                                 SyntaxFactory.ParseTypeName(_targetName)
-                                            ))));
+                                            )))));
                             }
                         }
                         else if (expression is MemberAccessExpressionSyntax memberAccess && memberAccess.Expression is IdentifierNameSyntax memberIdentifier)
@@ -527,14 +548,14 @@ namespace Pipeware.SourceImport.Rewriters
                             {
                                 _logger.LogDebug("Replaced [teal]{node}[/] expression with [green]{target}[/] type", node, _targetName);
 
-                                return node.WithArgumentList(
+                                return Visit(node.WithArgumentList(
                                     node.ArgumentList.WithArguments(
                                         node.ArgumentList.Arguments.Replace(
                                             node.ArgumentList.Arguments[0],
                                             node.ArgumentList.Arguments[0].WithExpression(
                                                 memberAccess.WithExpression(
                                                     SyntaxFactory.ParseTypeName(_targetName))
-                                            ))));
+                                            )))));
                             }
                         }
                     }

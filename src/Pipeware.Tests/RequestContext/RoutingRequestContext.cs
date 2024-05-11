@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pipeware.Tests.RequestContext
 {
-    public class RoutingRequestContext : IRequestContext, IRequestPathFeature, IRouteValuesFeature, IResultObjectFeature, IResultFailureFeature, IRequestBodyFeature
+    public class RoutingRequestContext : IRequestContext, IRequestPathFeature, IRouteValuesFeature, IResponseObjectFeature, IFailureFeature, IRequestBodyFeature
     {
         private QueryFeature _queryFeature;
 
@@ -25,9 +25,9 @@ namespace Pipeware.Tests.RequestContext
             Features.Set<IRequestPathFeature>(this);
             Features.Set<IQueryFeature>(_queryFeature = new QueryFeature(Features));
             Features.Set<IRouteValuesFeature>(this);
-            Features.Set<IResultObjectFeature>(this);
-            Features.Set<IResultFailureFeature>(this);
-            Features.Set<IRequestBodyFeature>(this);
+            Features.Set<IResponseObjectFeature>(this);
+            Features.Set<IFailureFeature>(this);
+            Features.Set<IRequestBodyFeature>(this);    
         }
 
         public IFeatureCollection Features { get; }

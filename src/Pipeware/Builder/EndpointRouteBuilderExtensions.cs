@@ -111,7 +111,7 @@ public static partial class EndpointRouteBuilderExtensions
 
         EndpointFilterDelegate<TRequestContext> filteredInvocation = async (EndpointFilterInvocationContext<TRequestContext> context) =>
         {
-            if (context.RequestContext.Features.Get<IResultFailureFeature>() is not IResultFailureFeature responseFeature || !responseFeature.IsFailure)
+            if (context.RequestContext.Features.Get<IFailureFeature>() is not IFailureFeature responseFeature || !responseFeature.IsFailure)
             {
                 await requestDelegate(context.RequestContext);
             }

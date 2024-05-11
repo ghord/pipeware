@@ -3,7 +3,7 @@
 
 namespace Pipeware.Features;
 
-public interface IResultFailureFeature
+public interface IFailureFeature
 {
     public bool IsFailure { get; set; }
     public Exception? Exception { get; set; }

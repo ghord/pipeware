@@ -16,27 +16,102 @@ using System.Threading.Tasks;
 namespace Pipeware.Tests
 {
     [TestClass]
-    public class RoutingTests : RoutingTestsBase
+    public class RoutingTests
     {
+        class MyRoutingRequestContext : IRequestContext, IRequestPathFeature, IRouteValuesFeature, IFailureFeature
+        {
+            public MyRoutingRequestContext(string requestPath, IServiceProvider serviceProvider)
+            {
+                Path = requestPath;
+                PathBase = string.Empty;
+                QueryString = string.Empty;
+                RouteValues = new RouteValueDictionary();
+
+                Features = new FeatureCollection();
+                Features.Set<IRequestPathFeature>(this);
+                Features.Set<IRouteValuesFeature>(this);
+                Features.Set<IFailureFeature>(this);
+
+                RequestServices = serviceProvider;
+            }
+
+            public IFeatureCollection Features { get; }
+            public IDictionary<string, object?> Items { get; } = new Dictionary<string, object?>();
+            public IServiceProvider RequestServices { get; }
+            public PathString PathBase { get; set; }
+            public PathString Path { get; set; }
+            public string QueryString { get; set; }
+            public RouteValueDictionary RouteValues { get; set; }
+            public bool IsFailure { get; set; }
+            public Exception? Exception { get; set; }
+        }
+
         [TestMethod]
         public async Task ShouldRouteRequest()
         {
-            var pipeline = CreatePipeline(builder =>
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddRoutingCore<MyRoutingRequestContext>();
+            serviceCollection.AddLogging();
+            serviceCollection.TryAddSingleton(sp => new DiagnosticListener("Pipeware"));
+            serviceCollection.TryAddSingleton<DiagnosticSource>(sp => sp.GetRequiredService<DiagnosticListener>());
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var builder = new PipelineBuilder<MyRoutingRequestContext>(serviceProvider);
+
+            builder.UseRouting();
+            builder.UseEndpoints(endpoints =>
             {
-                builder.Map(RoutePatternFactory.Parse("/test"), (RoutingRequestContext ctx) =>
+                endpoints.Map("/test", ctx =>
                 {
-                    ctx.Result = "testEndpoint";
+                    ctx.Items["response"] = "testEndpoint";
 
                     return Task.CompletedTask;
                 });
+            });
 
-            }, out var serviceProvider);
+            var pipeline = builder.Build();
 
-            var request = new RoutingRequestContext("/test", serviceProvider.CreateScope());
-            
+            var request = new MyRoutingRequestContext("/test", serviceProvider.CreateScope().ServiceProvider);
+
             await pipeline(request);
 
-            Assert.AreEqual("testEndpoint", request.Result);
+            Assert.AreEqual("testEndpoint", request.Items["response"]);
+        }
+
+        [TestMethod]
+        public async Task ShouldRouteRequestWithRouteValue()
+        {
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddRoutingCore<MyRoutingRequestContext>();
+            serviceCollection.AddLogging();
+            serviceCollection.TryAddSingleton(sp => new DiagnosticListener("Pipeware"));
+            serviceCollection.TryAddSingleton<DiagnosticSource>(sp => sp.GetRequiredService<DiagnosticListener>());
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var builder = new PipelineBuilder<MyRoutingRequestContext>(serviceProvider);
+
+            builder.UseRouting();
+            builder.UseEndpoints(endpoints =>
+            {
+                endpoints.Map("/test/{name}", (MyRoutingRequestContext ctx, string name) =>
+                {
+                    ctx.Items["response"] = $"Hello, {name}!";
+
+                    return Task.CompletedTask;
+                });
+            });
+
+            var pipeline = builder.Build();
+
+            var request = new MyRoutingRequestContext("/test/world", serviceProvider.CreateScope().ServiceProvider);
+
+            await pipeline(request);
+
+            Assert.AreEqual("Hello, world!", request.Items["response"]);
         }
 
         [TestMethod]
@@ -44,45 +119,45 @@ namespace Pipeware.Tests
         {
             var serviceCollection = new ServiceCollection();
 
-            serviceCollection.AddRoutingCore<RoutingRequestContext>();
+            serviceCollection.AddRoutingCore<MyRoutingRequestContext>();
             serviceCollection.AddLogging();
             serviceCollection.TryAddSingleton(sp => new DiagnosticListener("Pipeware"));
             serviceCollection.TryAddSingleton<DiagnosticSource>(sp => sp.GetRequiredService<DiagnosticListener>());
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var builder = new PipelineBuilder<RoutingRequestContext>(serviceProvider);
+            var builder = new PipelineBuilder<MyRoutingRequestContext>(serviceProvider);
 
             builder.UseRouting();
             builder.UseEndpoints(_ => { });
 
             builder.Map("/test", ctx =>
             {
-                ctx.Result = "testEndpoint";
+                ctx.Items["response"] = "testEndpoint";
 
                 return Task.CompletedTask;
             });
 
             builder.Map("/test2", ctx =>
             {
-                ctx.Result = "testEndpoint2";
+                ctx.Items["response"] = "testEndpoint2";
 
                 return Task.CompletedTask;
             });
 
             var pipeline = builder.Build();
 
-            var request = new RoutingRequestContext("/test", serviceProvider.CreateScope());
+            var request = new MyRoutingRequestContext("/test", serviceProvider.CreateScope().ServiceProvider);
 
             await pipeline(request);
 
 
-            Assert.AreEqual("testEndpoint", request.Result);
-            var request2 = new RoutingRequestContext("/test2", serviceProvider.CreateScope());
+            Assert.AreEqual("testEndpoint", request.Items["response"]);
+            var request2 = new MyRoutingRequestContext("/test2", serviceProvider.CreateScope().ServiceProvider);
 
             await pipeline(request2);
 
-            Assert.AreEqual("testEndpoint2", request2.Result);
+            Assert.AreEqual("testEndpoint2", request2.Items["response"]);
         }
 
     }

@@ -51,6 +51,11 @@ public class PipelineBuilder<TRequestContext> : IPipelineBuilder<TRequestContext
                 throw new InvalidOperationException(message);
             }
 
+            if(context.Features.Get<IFailureFeature>() is { } failureFeature)
+            {
+                failureFeature.IsFailure = true;
+            }
+
             return Task.CompletedTask;
         });
     }

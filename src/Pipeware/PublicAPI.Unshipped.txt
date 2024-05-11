@@ -204,6 +204,11 @@ Pipeware.Features.FeatureReferences<TCache>.Revision.get -> int
 Pipeware.Features.IEndpointFeature<TRequestContext>
 Pipeware.Features.IEndpointFeature<TRequestContext>.Endpoint.get -> Pipeware.Endpoint<TRequestContext!>?
 Pipeware.Features.IEndpointFeature<TRequestContext>.Endpoint.set -> void
+Pipeware.Features.IFailureFeature
+Pipeware.Features.IFailureFeature.Exception.get -> System.Exception?
+Pipeware.Features.IFailureFeature.Exception.set -> void
+Pipeware.Features.IFailureFeature.IsFailure.get -> bool
+Pipeware.Features.IFailureFeature.IsFailure.set -> void
 Pipeware.Features.IFeatureCollection
 Pipeware.Features.IFeatureCollection.Get<TFeature>() -> TFeature?
 Pipeware.Features.IFeatureCollection.IsReadOnly.get -> bool
@@ -228,11 +233,9 @@ Pipeware.Features.IRequestPathFeature.PathBase.get -> Pipeware.PathString
 Pipeware.Features.IRequestPathFeature.PathBase.set -> void
 Pipeware.Features.IRequestPathFeature.QueryString.get -> string!
 Pipeware.Features.IRequestPathFeature.QueryString.set -> void
-Pipeware.Features.IResultFailureFeature
-Pipeware.Features.IResultFailureFeature.Exception.get -> System.Exception?
-Pipeware.Features.IResultFailureFeature.Exception.set -> void
-Pipeware.Features.IResultFailureFeature.IsFailure.get -> bool
-Pipeware.Features.IResultFailureFeature.IsFailure.set -> void
+Pipeware.Features.IResponseObjectFeature
+Pipeware.Features.IResponseObjectFeature.Result.get -> object?
+Pipeware.Features.IResponseObjectFeature.SetResultAsync(object? result) -> System.Threading.Tasks.Task!
 Pipeware.Features.IResultObjectFeature
 Pipeware.Features.IResultObjectFeature.Result.get -> object?
 Pipeware.Features.IResultObjectFeature.SetResultAsync(object? result) -> System.Threading.Tasks.Task!
@@ -911,11 +914,11 @@ static Pipeware.QueryString.FromUriComponent(System.Uri! uri) -> Pipeware.QueryS
 static Pipeware.QueryString.operator !=(Pipeware.QueryString left, Pipeware.QueryString right) -> bool
 static Pipeware.QueryString.operator +(Pipeware.QueryString left, Pipeware.QueryString right) -> Pipeware.QueryString
 static Pipeware.QueryString.operator ==(Pipeware.QueryString left, Pipeware.QueryString right) -> bool
+static Pipeware.RequestContextFeatureExtensions.GetFailureFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IFailureFeature!
 static Pipeware.RequestContextFeatureExtensions.GetQueryFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IQueryFeature!
 static Pipeware.RequestContextFeatureExtensions.GetRequestLifetimeFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IRequestLifetimeFeature!
 static Pipeware.RequestContextFeatureExtensions.GetRequestPathFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IRequestPathFeature!
-static Pipeware.RequestContextFeatureExtensions.GetResultFailureFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IResultFailureFeature!
-static Pipeware.RequestContextFeatureExtensions.GetResultObjectFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IResultObjectFeature!
+static Pipeware.RequestContextFeatureExtensions.GetResultObjectFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IResponseObjectFeature!
 static Pipeware.RequestContextFeatureExtensions.GetRouteValuesFeature(this Pipeware.IRequestContext! requestContext) -> Pipeware.Features.IRouteValuesFeature!
 static Pipeware.RequestDelegateFactory<TRequestContext>.Create(System.Delegate! handler, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options = null, Pipeware.RequestDelegateMetadataResult? metadataResult = null) -> Pipeware.RequestDelegateResult<TRequestContext!>!
 static Pipeware.RequestDelegateFactory<TRequestContext>.Create(System.Delegate! handler, Pipeware.RequestDelegateFactoryOptions<TRequestContext!>? options) -> Pipeware.RequestDelegateResult<TRequestContext!>!

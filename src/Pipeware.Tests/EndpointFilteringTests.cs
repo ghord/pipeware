@@ -25,7 +25,7 @@ namespace Pipeware.Tests
                 {
                     if (context.GetArgument<int>(0) % 2 == 0)
                     {
-                        context.RequestContext.GetResultFailureFeature().IsFailure = true;
+                        context.RequestContext.IsFailure = true;
                     }
 
                     return await next(context);
@@ -52,7 +52,7 @@ namespace Pipeware.Tests
             {
                 if (context.GetArgument<int>(0) % 2 == 0)
                 {
-                    context.RequestContext.GetResultFailureFeature().IsFailure = true;
+                    context.RequestContext.IsFailure = true;
                 }
 
                 return await next(context);
@@ -103,7 +103,7 @@ namespace Pipeware.Tests
                         {
                             if (invocationContext.GetArgument<int>(0) % 2 == 0)
                             {
-                                invocationContext.RequestContext.GetResultFailureFeature().IsFailure = true;
+                                invocationContext.RequestContext.IsFailure = true;
                             }
 
                             return await next(invocationContext);
@@ -142,7 +142,7 @@ namespace Pipeware.Tests
                 {
                     if (int.Parse((string)context.RequestContext.RouteValues["value"]!) % 2 == 0)
                     {
-                        context.RequestContext.GetResultFailureFeature().IsFailure = true;
+                        context.RequestContext.IsFailure = true;
                     }
 
                     return await next(context);

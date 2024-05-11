@@ -22,14 +22,14 @@ public static class RequestContextFeatureExtensions
         return requestContext.Features.Get<IRouteValuesFeature>() ?? throw new NotSupportedException("IRouteValuesFeature not found on requestContext");
     }
 
-    public static IResultFailureFeature GetResultFailureFeature(this IRequestContext requestContext)
+    public static IFailureFeature GetFailureFeature(this IRequestContext requestContext)
     {
-        return requestContext.Features.Get<IResultFailureFeature>() ?? throw new NotSupportedException("IResultFailureFeature not found on requestContext");
+        return requestContext.Features.Get<IFailureFeature>() ?? throw new NotSupportedException("IFailureFeature not found on requestContext");
     }
 
-    public static IResultObjectFeature GetResultObjectFeature(this IRequestContext requestContext)
+    public static IResponseObjectFeature GetResultObjectFeature(this IRequestContext requestContext)
     {
-        return requestContext.Features.Get<IResultObjectFeature>() ?? throw new NotSupportedException("IResultObjectFeature not found on requestContext");
+        return requestContext.Features.Get<IResponseObjectFeature>() ?? throw new NotSupportedException("IResponseObjectFeature not found on requestContext");
     }
 
     public static IRequestLifetimeFeature GetRequestLifetimeFeature(this IRequestContext requestContext)

@@ -40,7 +40,7 @@ partial class RequestDelegateFactory<TRequestContext>
 
     private static readonly MethodCallExpression RequestLifetimeFeatureExpr = Expression.Call(null, typeof(RequestContextFeatureExtensions).GetMethod(nameof(RequestContextFeatureExtensions.GetRequestLifetimeFeature))!, HttpContextExpr);
 
-    private static readonly MethodCallExpression ResultFailureFeatureExpr = Expression.Call(null, typeof(RequestContextFeatureExtensions).GetMethod(nameof(RequestContextFeatureExtensions.GetResultFailureFeature))!, HttpContextExpr);
+    private static readonly MethodCallExpression FailureFeatureExpr = Expression.Call(null, typeof(RequestContextFeatureExtensions).GetMethod(nameof(RequestContextFeatureExtensions.GetFailureFeature))!, HttpContextExpr);
 
     private static readonly MemberExpression RouteValuesExpr = Expression.Property(RouteValuesFeatureExpr, typeof(IRouteValuesFeature).GetProperty(nameof(IRouteValuesFeature.RouteValues))!);
 
@@ -48,7 +48,7 @@ partial class RequestDelegateFactory<TRequestContext>
 
     private static readonly MemberExpression QueryExpr = Expression.Property(QueryFeatureExpr, typeof(IQueryFeature).GetProperty(nameof(IQueryFeature.Query))!);
 
-    private static readonly MemberExpression IsFailureExpr = Expression.Property(ResultFailureFeatureExpr, typeof(IResultFailureFeature).GetProperty(nameof(IResultFailureFeature.IsFailure))!);
+    private static readonly MemberExpression IsFailureExpr = Expression.Property(FailureFeatureExpr, typeof(IFailureFeature).GetProperty(nameof(IFailureFeature.IsFailure))!);
 
     private static readonly ParameterExpression FilterContextExpr = Expression.Parameter(typeof(EndpointFilterInvocationContext<TRequestContext>), "context");
 
@@ -58,10 +58,10 @@ partial class RequestDelegateFactory<TRequestContext>
 
     private static readonly Expression FilterContextRequestContextExpr = Expression.Property(FilterContextExpr, typeof(EndpointFilterInvocationContext<TRequestContext>).GetProperty(nameof(EndpointFilterInvocationContext<TRequestContext>.RequestContext))!);
 
-    private static readonly Expression FilterContextResultFailureFeatureExpr = Expression.Call(null, typeof(RequestContextFeatureExtensions).GetMethod(nameof(RequestContextFeatureExtensions.GetResultFailureFeature))!, FilterContextRequestContextExpr);
+    private static readonly Expression FilterContextResultFailureFeatureExpr = Expression.Call(null, typeof(RequestContextFeatureExtensions).GetMethod(nameof(RequestContextFeatureExtensions.GetFailureFeature))!, FilterContextRequestContextExpr);
 
 
-    private static readonly Expression FilterContextRequestContextIsFailureExpr = Expression.Property(FilterContextResultFailureFeatureExpr, typeof(IResultFailureFeature).GetProperty(nameof(IResultFailureFeature.IsFailure))!);
+    private static readonly Expression FilterContextRequestContextIsFailureExpr = Expression.Property(FilterContextResultFailureFeatureExpr, typeof(IFailureFeature).GetProperty(nameof(IFailureFeature.IsFailure))!);
 
     private static readonly MethodInfo ObjectResultWriteResponseOfTAsyncMethod = typeof(RequestDelegateFactory<TRequestContext>).GetMethod(nameof(ExecuteWriteObjectResponseAsyncOfT), BindingFlags.NonPublic | BindingFlags.Static)!;
 
@@ -303,7 +303,7 @@ partial class RequestDelegateFactory<TRequestContext>
                             bodyValue.GetType().Name,
                             throwOnBadRequest);
 
-                        requestContext.GetResultFailureFeature().IsFailure = true;
+                        requestContext.GetFailureFeature().IsFailure = true;
                         return (null, false);
                     }
                 }
@@ -315,7 +315,7 @@ partial class RequestDelegateFactory<TRequestContext>
                         ex,
                         throwOnBadRequest && !preventRethrow);
 
-                    requestContext.GetResultFailureFeature().IsFailure = true;
+                    requestContext.GetFailureFeature().IsFailure = true;
                     return (null, false);
                 }
 

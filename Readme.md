@@ -96,7 +96,7 @@ TODO: Details on how to implement request context correctly.
 - Trimming annotated **(in preview3)**
 - Link generation **(in preview3)**
 - Update generic extension methods to use CRTP **(in preview3)**
-- Support synchronous pipelines
+- Support synchronous pipelines **(in preview4)**
 - Remove all mentions of http from comments on public methods
 - API review of new features
 - 100% test coverage of handwritten code 
